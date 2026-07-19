@@ -19,14 +19,13 @@ import styles from "./SettingsDialog.module.css";
 type SettingsSubpage = "customBackground" | "customPalette";
 
 const contentTransition = {
-	duration: 0.3,
-	ease: [0.2, 0.8, 0.2, 1],
+	duration: 0.25,
+	ease: [0.4, 0, 0.2, 1],
 } as const;
 
 const contentVariants = {
-	initial: { opacity: 0 },
-	animate: { opacity: 1 },
-	exit: { opacity: 0 },
+	initial: { opacity: 0, y: 12 },
+	animate: { opacity: 1, y: 0 },
 } as const;
 
 export const SettingsDialog = memo(() => {
@@ -147,7 +146,6 @@ export const SettingsDialog = memo(() => {
 								variants={contentVariants}
 								initial="initial"
 								animate="animate"
-								exit="exit"
 								transition={contentTransition}
 							>
 								{activeTab === "common" && <SettingsCommonTab />}
