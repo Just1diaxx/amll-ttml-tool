@@ -537,9 +537,7 @@ export const LyricLineView: FC<{
 						data-absolute-index={lineIndex}
 						data-is-dragged={isDragged}
 						onPointerDown={(evt) => {
-							if (toolMode === ToolMode.Edit) {
-								onPointerDown(evt, line.id, lineIndex);
-							}
+							onPointerDown(evt, line.id, lineIndex);
 						}}
 						asChild
 					>
