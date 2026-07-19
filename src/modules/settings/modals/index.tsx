@@ -7,7 +7,7 @@ import {
 import { Box, Dialog, Heading, Text } from "@radix-ui/themes";
 import { AnimatePresence, motion } from "framer-motion";
 import { useAtom } from "jotai";
-import { memo, useState } from "react";
+import { memo, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { settingsDialogAtom, settingsTabAtom } from "$/states/dialogs.ts";
 import { SettingsAboutTab } from "./about";
@@ -15,33 +15,6 @@ import { SettingsCommonTab } from "./common";
 import { SettingsKeyBindingsDialog } from "./keybindings";
 import { SettingsPersonalizationTab } from "./personalization";
 import styles from "./SettingsDialog.module.css";
-
-const tabConfig = [
-	{
-		value: "common",
-		icon: Settings24Regular,
-		labelKey: "settingsDialog.tab.common",
-		fallback: "常规",
-	},
-	{
-		value: "keybinding",
-		icon: Keyboard24Regular,
-		labelKey: "settingsDialog.tab.keybindings",
-		fallback: "按键绑定",
-	},
-	{
-		value: "personalization",
-		icon: PaintBrush24Regular,
-		labelKey: "settingsDialog.tab.personalization",
-		fallback: "个性化",
-	},
-	{
-		value: "about",
-		icon: Info24Regular,
-		labelKey: "common.about",
-		fallback: "关于",
-	},
-] as const;
 
 type SettingsSubpage = "customBackground" | "customPalette";
 
@@ -64,9 +37,36 @@ export const SettingsDialog = memo(() => {
 		null,
 	);
 	const { t } = useTranslation();
+
+	const tabConfig = useMemo(
+		() => [
+			{
+				value: "common",
+				icon: Settings24Regular,
+				label: t("settingsDialog.tab.general", "常规"),
+			},
+			{
+				value: "keybinding",
+				icon: Keyboard24Regular,
+				label: t("settingsDialog.tab.keybindings", "按键绑定"),
+			},
+			{
+				value: "personalization",
+				icon: PaintBrush24Regular,
+				label: t("settingsDialog.tab.appearance", "个性化"),
+			},
+			{
+				value: "about",
+				icon: Info24Regular,
+				label: t("settingsDialog.tab.about", "关于"),
+			},
+		],
+		[t],
+	);
+
 	const activeTabConfig =
 		tabConfig.find((tab) => tab.value === activeTab) ?? tabConfig[0];
-	const activeTabTitle = t(activeTabConfig.labelKey, activeTabConfig.fallback);
+	const activeTabTitle = activeTabConfig.label;
 	const subpageTitle =
 		activeTab === "personalization"
 			? activeSubpage === "customBackground"
@@ -107,7 +107,7 @@ export const SettingsDialog = memo(() => {
 									}}
 								>
 									<Icon className={styles.navIcon} />
-									<span>{t(tab.labelKey, tab.fallback)}</span>
+									<span>{tab.label}</span>
 								</button>
 							);
 						})}

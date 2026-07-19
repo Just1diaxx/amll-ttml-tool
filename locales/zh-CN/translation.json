@@ -315,7 +315,11 @@
 			}
 		},
 		"tab": {
-			"spectrogram": "频谱图"
+			"spectrogram": "频谱图",
+			"keybindings": "按键绑定",
+			"about": "关于",
+			"general": "常规",
+			"appearance": "个性化"
 		}
 	},
 	"error": {

@@ -315,7 +315,11 @@
 			}
 		},
 		"tab": {
-			"spectrogram": "Spectrogram"
+			"spectrogram": "Spectrogram",
+			"keybindings": "Keyboard Shortcuts",
+			"about": "About",
+			"general": "General",
+			"appearance": "Appearance"
 		}
 	},
 	"error": {
