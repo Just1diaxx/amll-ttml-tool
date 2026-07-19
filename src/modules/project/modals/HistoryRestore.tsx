@@ -237,13 +237,18 @@ export const HistoryRestoreDialog = () => {
 													transition: "background-color 0.2s",
 												}}
 											>
-												<Flex justify="between" align="start">
+												<Flex justify="between" align="start" gap="2">
 													<Flex
 														direction="column"
 														gap="1"
-														style={{ overflow: "hidden" }}
+														style={{ flex: 1, minWidth: 0 }}
 													>
-														<Text weight="bold" size="2" truncate>
+														<Text
+															weight="bold"
+															size="2"
+															wrap="wrap"
+															style={{ wordBreak: "break-all" }}
+														>
 															{getProjectDisplayName(project)}
 														</Text>
 														<Flex gap="2" align="center">
