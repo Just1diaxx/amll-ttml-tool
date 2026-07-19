@@ -276,7 +276,12 @@ export const HistoryRestoreDialog = () => {
 					</Flex>
 
 					<Box
-						style={{ flexGrow: 1, display: "flex", flexDirection: "column" }}
+						style={{
+							flexGrow: 1,
+							display: "flex",
+							flexDirection: "column",
+							minWidth: 0,
+						}}
 					>
 						{currentProject ? (
 							<>
@@ -318,7 +323,16 @@ export const HistoryRestoreDialog = () => {
 												<ScrollArea type="auto" scrollbars="vertical">
 													<Flex gap="2" wrap="wrap" pb="1" pr="3">
 														{currentProject.latestState.metadata.map((meta) => (
-															<Badge key={meta.key} variant="soft" color="gray">
+															<Badge
+																key={meta.key}
+																variant="soft"
+																color="gray"
+																style={{
+																	maxWidth: "100%",
+																	whiteSpace: "normal",
+																	wordBreak: "break-all",
+																}}
+															>
 																{meta.key}: {meta.value[0]}
 															</Badge>
 														))}
