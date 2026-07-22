@@ -19,12 +19,12 @@ import {
 } from "$/states/dialogs.ts";
 import { isDirtyAtom, lyricLinesAtom } from "$/states/main.ts";
 import { type LyricLine, newLyricLine, newLyricWord } from "$/types/ttml";
-import { error as logError } from "$/utils/logging.ts";
 
 // import styles from "./ImportFromText.module.css";
 import error = toast.error;
 
 import { useTranslation } from "react-i18next";
+import { projectLogger } from "../logger";
 
 // type IModelDeltaDecoration = monaco.editor.IModelDeltaDecoration;
 // type IEditorDecorationsCollection = monaco.editor.IEditorDecorationsCollection;
@@ -315,7 +315,7 @@ export const ImportFromText = () => {
 									error(
 										"导入纯文本歌词失败，请检查输入的文本是否正确，或者导入设置是否正确",
 									);
-									logError(e);
+									projectLogger.error(e);
 								}
 							}}
 						>

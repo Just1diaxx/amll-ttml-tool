@@ -31,7 +31,7 @@ import {
 } from "$/modules/project/autosave/autosave";
 import { confirmDialogAtom, historyRestoreDialogAtom } from "$/states/dialogs";
 import { newLyricLinesAtom, projectIdAtom } from "$/states/main";
-import { error as logError } from "$/utils/logging";
+import { projectLogger } from "../logger";
 
 export const HistoryRestoreDialog = () => {
 	const [isOpen, setIsOpen] = useAtom(historyRestoreDialogAtom);
@@ -54,7 +54,7 @@ export const HistoryRestoreDialog = () => {
 				setSelectedProjectId((prev) => prev || list[0].id);
 			}
 		} catch (e) {
-			logError("Failed to load project list", e);
+			projectLogger.error("Failed to load project list", e);
 			toast.error(t("historyRestoreDialog.loadError", "加载历史记录失败"));
 		}
 	}, [t]);
@@ -64,7 +64,7 @@ export const HistoryRestoreDialog = () => {
 			const list = await getProjectVersions(projectId);
 			setVersions(list);
 		} catch (e) {
-			logError("Failed to load versions:", e);
+			projectLogger.error("Failed to load versions:", e);
 		}
 	}, []);
 

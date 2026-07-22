@@ -26,6 +26,7 @@ import { useTtmlErrorHandler } from "$/modules/ttml-processor/useTtmlErrorHandle
 import { submitToAMLLDBDialogAtom } from "$/states/dialogs.ts";
 import { lyricLinesAtom } from "$/states/main";
 import type { TTMLMetadata } from "$/types/ttml";
+import { projectLogger } from "../logger";
 
 enum UploadDBType {
 	Official = "official",
@@ -219,7 +220,7 @@ ${comment}
 			open(issueUrl.toString());
 			setDialogOpen(false);
 		} catch (err) {
-			console.error(err);
+			projectLogger.error(err);
 			toast.error(
 				t(
 					"submitToAMLLDB.errors.submitFailed",

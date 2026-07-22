@@ -35,8 +35,10 @@ import {
 	saveFileNameAtom,
 } from "$/states/main.ts";
 import type { TTMLLyric, TTMLMetadata } from "$/types/ttml";
-import { log, error as logError } from "$/utils/logging.ts";
+import { createLogger } from "$/utils/logger";
 import { parseLrc } from "$/utils/parse-lrc";
+
+const fileOpenerLogger = createLogger("FileOpener");
 
 const LYRIC_PARSERS: Record<string, (text: string) => LyricLine[]> = {
 	lrc: parseLrc,
@@ -200,7 +202,7 @@ export const useFileOpener = () => {
 							});
 						})
 						.catch((e) => {
-							logError(
+							fileOpenerLogger.error(
 								`Failed to load audio or extract metadata: ${file.name}`,
 								e,
 							);
@@ -250,16 +252,16 @@ export const useFileOpener = () => {
 						);
 
 						if (matchedProject) {
-							log(
+							fileOpenerLogger.debug(
 								`匹配到了已有项目: ${matchedProject.name} (${matchedProject.id})`,
 							);
 							resolvedProjectId = matchedProject.id;
 						} else {
-							log("未匹配已有项目");
+							fileOpenerLogger.debug("未匹配已有项目");
 						}
 					}
 				} catch (e) {
-					logError("解析项目数据时失败", e);
+					fileOpenerLogger.error("解析项目数据时失败", e);
 				}
 
 				applyDefaultTtmlAuthorMetadata(lyricData.metadata, {
@@ -274,7 +276,7 @@ export const useFileOpener = () => {
 					ext === "ttml" ? file.name : (suggestedFile?.fileName ?? file.name);
 				setSaveFileName(nextFileName);
 			} catch (e) {
-				logError(`Failed to open file: ${file.name}`, e);
+				fileOpenerLogger.error(`Failed to open file: ${file.name}`, e);
 				toast.error(t("error.openFileFailed", "打开文件失败"));
 			}
 		},

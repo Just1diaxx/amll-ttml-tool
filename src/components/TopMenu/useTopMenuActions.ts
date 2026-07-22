@@ -50,7 +50,9 @@ import {
 	undoLyricLinesAtom,
 } from "$/states/main.ts";
 import { type LyricWord, type LyricWordBase, newLyricWord } from "$/types/ttml";
-import { error, log } from "$/utils/logging.ts";
+import { createLogger } from "$/utils/logger";
+
+const topMenuLogger = createLogger("TopMenu");
 
 export const useTopMenuActions = () => {
 	const { t } = useTranslation();
@@ -167,7 +169,7 @@ export const useTopMenuActions = () => {
 			});
 			openFile(file);
 		} catch (e) {
-			error("Failed to parse TTML file from clipboard", e);
+			topMenuLogger.error("Failed to parse TTML file from clipboard", e);
 		}
 	}, [openFile]);
 
@@ -180,9 +182,9 @@ export const useTopMenuActions = () => {
 				return;
 			}
 			const b = new Blob([result.data], { type: "text/xml" });
-			saveFile(b, saveFileName).catch(error);
+			saveFile(b, saveFileName).catch(topMenuLogger.error);
 		} catch (e) {
-			error("Failed to save TTML file", e);
+			topMenuLogger.error("Failed to save TTML file", e);
 		}
 	}, [saveFileName, store, handleTtmlError]);
 
@@ -201,7 +203,7 @@ export const useTopMenuActions = () => {
 			}
 			await navigator.clipboard.writeText(result.data);
 		} catch (e) {
-			error("Failed to save TTML file into clipboard", e);
+			topMenuLogger.error("Failed to save TTML file into clipboard", e);
 		}
 	}, [store, handleTtmlError]);
 
@@ -301,7 +303,7 @@ export const useTopMenuActions = () => {
 	const onDeleteSelection = useCallback(() => {
 		const selectedWordIds = store.get(selectedWordsAtom);
 		const selectedLineIds = store.get(selectedLinesAtom);
-		log("deleting selections", selectedWordIds, selectedLineIds);
+		topMenuLogger.info("deleting selections", selectedWordIds, selectedLineIds);
 		if (selectedWordIds.size === 0) {
 			editLyricLines((prev) => {
 				prev.lyricLines = prev.lyricLines.filter(
@@ -414,7 +416,7 @@ export const useTopMenuActions = () => {
 					});
 					applyRomanizationWarnings(line.words);
 				} catch (e) {
-					error("Failed to distribute romanization", e);
+					topMenuLogger.error("Failed to distribute romanization", e);
 				}
 			});
 		});

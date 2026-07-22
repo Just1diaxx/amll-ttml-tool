@@ -309,12 +309,6 @@ const LyricWordViewEditSpan = ({
 					className={className}
 					onDoubleClick={onDoubleClick}
 					onClick={(evt) => {
-						console.log("[LyricWord] click", {
-							button: evt.button,
-							target: (evt.target as HTMLElement | null)?.tagName,
-							toolMode,
-							isWordSelected,
-						});
 						evt.stopPropagation();
 						evt.preventDefault();
 						onWordSelect(evt);
