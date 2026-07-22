@@ -48,6 +48,8 @@ export const LyricTimelineOverlay: FC<LyricTimelineOverlayProps> = ({
 			return;
 		}
 
+		let lockedGapDirection: "left" | "right" | null = null;
+
 		const handleGlobalMouseMove = (event: MouseEvent) => {
 			event.preventDefault();
 
@@ -59,6 +61,12 @@ export const LyricTimelineOverlay: FC<LyricTimelineOverlayProps> = ({
 					if (!lineBeingDragged) return;
 
 					const deltaX = event.clientX - startX;
+
+					if (isGapCreation && !lockedGapDirection) {
+						if (deltaX > 2) lockedGapDirection = "right";
+						else if (deltaX < -2) lockedGapDirection = "left";
+					}
+
 					const deltaTimeMs = Math.round((deltaX / zoom) * 1000);
 					let newTime =
 						(segmentIndex === -1
@@ -87,6 +95,7 @@ export const LyricTimelineOverlay: FC<LyricTimelineOverlayProps> = ({
 						newTime,
 						isGapCreation,
 						zoom,
+						lockedGapDirection,
 					);
 					setPreviewLine(preview);
 					break;
@@ -225,7 +234,7 @@ export const LyricTimelineOverlay: FC<LyricTimelineOverlayProps> = ({
 	return (
 		<div className={styles.overlay}>
 			{linesToRender.map((line) => (
-				<LyricLineSegment key={line.id} line={line} allLines={processedLines} />
+				<LyricLineSegment key={line.id} line={line} />
 			))}
 		</div>
 	);
