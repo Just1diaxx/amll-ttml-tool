@@ -61,6 +61,7 @@ const plugins: PluginOption = [
 			name: "Apple Music-like lyrics TTML Tool",
 			id: "amll-ttml-tool",
 			short_name: "AMLL TTML Tool",
+			display: "standalone",
 			description: "一个用于 Apple Music 的逐词歌词 TTML 编辑和时间轴工具",
 			theme_color: "#18a058",
 			icons: [
