@@ -26,9 +26,13 @@ import { SpectrogramContext } from "./SpectrogramContext.ts";
 
 interface LyricLineSegmentProps {
 	line: ProcessedLyricLine;
+	sharedBoundaryTimes: Set<number>;
 }
 
-export const LyricLineSegment: FC<LyricLineSegmentProps> = ({ line }) => {
+export const LyricLineSegment: FC<LyricLineSegmentProps> = ({
+	line,
+	sharedBoundaryTimes,
+}) => {
 	const previewLine = useAtomValue(previewLineAtom);
 	const setSelectedLines = useSetAtom(selectedLinesAtom);
 	const selectedWordId = useAtomValue(selectedWordIdAtom);
@@ -154,6 +158,7 @@ export const LyricLineSegment: FC<LyricLineSegmentProps> = ({ line }) => {
 						timeMs={boundary.timeMs}
 						lineStartTime={startTime}
 						kind={boundary.kind}
+						isShared={sharedBoundaryTimes.has(boundary.timeMs)}
 						visualState={resolveBoundaryVisualState(boundary, {
 							selectedWordId,
 							hoveredWordId,
