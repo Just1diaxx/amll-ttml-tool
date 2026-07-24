@@ -47,7 +47,7 @@ import {
 	selectedWordsAtom,
 	showEndTimeAsDurationAtom,
 } from "$/states/main.ts";
-import { sidebarPanelAtom } from "$/states/sidebar.ts";
+import { openSidebarTabsAtom, toggleTabAtom } from "$/states/sidebar.ts";
 import { type LyricLine, type LyricWord, newLyricLine } from "$/types/ttml";
 import { msToTimestamp, parseTimespan } from "$/utils/timestamp.ts";
 import { RibbonFrame, RibbonSection } from "./common";
@@ -713,9 +713,12 @@ const AuxiliaryDisplayField: FC = () => {
 
 export const EditModeRibbonBar: FC = forwardRef<HTMLDivElement>(
 	(_props, ref) => {
-		const [sidebarPanel, setSidebarPanel] = useAtom(sidebarPanelAtom);
-		const isOutlineOpen = sidebarPanel === "outline";
+		const openTabs = useAtomValue(openSidebarTabsAtom);
+		const toggleTab = useSetAtom(toggleTabAtom);
+		const isOutlineOpen = openTabs.includes("outline");
+		const isBpmOpen = openTabs.includes("bpm");
 		const idOutline = useId();
+		const idBpm = useId();
 
 		const editLyricLines = useSetImmerAtom(lyricLinesAtom);
 		const { t } = useTranslation();
@@ -867,24 +870,51 @@ export const EditModeRibbonBar: FC = forwardRef<HTMLDivElement>(
 					<AuxiliaryDisplayField />
 				</RibbonSection>
 				<RibbonSection label={t("ribbonBar.editMode.views", "视图")}>
-					<Flex gap="2" flexGrow="1" align="center" justify="center">
-						<Checkbox
-							id={idOutline}
-							checked={isOutlineOpen}
-							onCheckedChange={(checked) => {
-								setSidebarPanel(checked ? "outline" : "none");
-							}}
-						/>
-						<Text size="1" asChild>
-							<label
-								htmlFor={idOutline}
-								style={{
-									userSelect: "none",
+					<Flex
+						direction="column"
+						gap="1"
+						flexGrow="1"
+						align="start"
+						justify="center"
+					>
+						<Flex gap="3" align="center">
+							<Text size="1" asChild>
+								<label
+									htmlFor={idOutline}
+									style={{
+										userSelect: "none",
+									}}
+								>
+									{t("ribbonBar.editMode.showOutline", "大纲")}
+								</label>
+							</Text>
+							<Checkbox
+								id={idOutline}
+								checked={isOutlineOpen}
+								onCheckedChange={(checked) => {
+									toggleTab({ tabId: "outline", open: Boolean(checked) });
 								}}
-							>
-								{t("ribbonBar.editMode.showOutline", "大纲")}
-							</label>
-						</Text>
+							/>
+						</Flex>
+						<Flex gap="3" align="center">
+							<Text size="1" asChild>
+								<label
+									htmlFor={idBpm}
+									style={{
+										userSelect: "none",
+									}}
+								>
+									{t("ribbonBar.editMode.showBpmPanel", "BPM")}
+								</label>
+							</Text>
+							<Checkbox
+								id={idBpm}
+								checked={isBpmOpen}
+								onCheckedChange={(checked) => {
+									toggleTab({ tabId: "bpm", open: Boolean(checked) });
+								}}
+							/>
+						</Flex>
 					</Flex>
 				</RibbonSection>
 			</RibbonFrame>

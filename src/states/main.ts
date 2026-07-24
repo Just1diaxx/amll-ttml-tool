@@ -167,4 +167,3 @@ export const isCopyModeAtom = atom(false);
  * 用于触发定位当前行事件的 Atom
  */
 export const locateActionAtom = atom(0);
-

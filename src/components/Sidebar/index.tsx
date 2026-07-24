@@ -1,39 +1,83 @@
 import { Dismiss16Regular } from "@fluentui/react-icons";
-import { Box, IconButton, Text } from "@radix-ui/themes";
+import { Box, IconButton } from "@radix-ui/themes";
 import { motion } from "framer-motion";
-import { useAtom } from "jotai";
-import { useCallback, useEffect, useRef, useState } from "react";
+import type { TFunction } from "i18next";
+import { useAtom, useAtomValue, useSetAtom } from "jotai";
+import {
+	type FC,
+	useCallback,
+	useEffect,
+	useMemo,
+	useRef,
+	useState,
+} from "react";
 import { useTranslation } from "react-i18next";
-import { sidebarPanelAtom, sidebarWidthAtom } from "$/states/sidebar.ts";
+import {
+	activeSidebarTabAtom,
+	closeTabAtom,
+	openSidebarTabsAtom,
+	type SidebarPanelType,
+	sidebarWidthAtom,
+} from "$/states/sidebar.ts";
+import { BpmPanel } from "./BpmPanel";
 import styles from "./index.module.css";
 import { OutlinePanel } from "./OutlinePanel";
+import { SidebarTabBar } from "./SidebarTabBar";
 
 const MIN_WIDTH = 200;
 const SNAP_CLOSE_THRESHOLD = 20;
 const MAX_WIDTH = 650;
 
+export interface SidebarTab {
+	id: Exclude<SidebarPanelType, "none">;
+	getTitle: (t: TFunction) => string;
+	component: FC;
+}
+
+export const SIDEBAR_TABS: SidebarTab[] = [
+	{
+		id: "outline",
+		getTitle: (t) => t("sidebar.outline.title", "大纲"),
+		component: OutlinePanel,
+	},
+	{
+		id: "bpm",
+		getTitle: (t) => t("sidebar.bpm.title", "BPM"),
+		component: BpmPanel,
+	},
+];
+
 export const Sidebar = () => {
 	const { t } = useTranslation();
-	const [activePanel, setActivePanel] = useAtom(sidebarPanelAtom);
+	const openTabs = useAtomValue(openSidebarTabsAtom);
+	const [activePanel, setActivePanel] = useAtom(activeSidebarTabAtom);
+	const closeTab = useSetAtom(closeTabAtom);
 	const [savedWidth, setSavedWidth] = useAtom(sidebarWidthAtom);
 
 	const [isDragging, setIsDragging] = useState(false);
 	const [tempWidth, setTempWidth] = useState(savedWidth);
 	const sidebarRef = useRef<HTMLDivElement>(null);
 
+	const visibleTabs = useMemo(
+		() =>
+			openTabs
+				.map((id) => SIDEBAR_TABS.find((tab) => tab.id === id))
+				.filter((tab): tab is SidebarTab => tab !== undefined),
+		[openTabs],
+	);
+
+	const lastNonEmptyTabsCountRef = useRef(visibleTabs.length);
+	if (visibleTabs.length > 0) {
+		lastNonEmptyTabsCountRef.current = visibleTabs.length;
+	}
+
+	const isSingleTab =
+		visibleTabs.length === 1 ||
+		(visibleTabs.length === 0 && lastNonEmptyTabsCountRef.current === 1);
+
 	const contentWidth = tempWidth > 0 ? tempWidth : savedWidth;
 
-	const isOpen = activePanel !== "none";
-
-	const getTitle = () => {
-		if (!isOpen) return "";
-
-		const PANEL_TITLE_MAP: Record<string, string> = {
-			outline: t("sidebar.outline.title", "大纲"),
-		};
-
-		return PANEL_TITLE_MAP[activePanel] || activePanel;
-	};
+	const isOpen = activePanel !== "none" && visibleTabs.length > 0;
 
 	const handlePointerDown = useCallback((e: React.PointerEvent) => {
 		e.preventDefault();
@@ -104,10 +148,13 @@ export const Sidebar = () => {
 						height: "100%",
 					}}
 				>
-					<div className={styles.header}>
-						<Text className={styles.title} size="2">
-							{getTitle()}
-						</Text>
+					<div className={styles.header} data-single-tab={isSingleTab}>
+						<SidebarTabBar
+							tabs={visibleTabs}
+							activePanel={activePanel}
+							onSelectTab={setActivePanel}
+							onCloseTab={(id) => closeTab(id)}
+						/>
 						<IconButton
 							variant="ghost"
 							color="gray"
@@ -120,7 +167,11 @@ export const Sidebar = () => {
 					</div>
 
 					<Box className={styles.content}>
-						{activePanel === "outline" && <OutlinePanel />}
+						{SIDEBAR_TABS.map((tab) => {
+							if (activePanel !== tab.id) return null;
+							const Comp = tab.component;
+							return <Comp key={tab.id} />;
+						})}
 					</Box>
 				</div>
 			</motion.div>

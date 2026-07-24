@@ -69,7 +69,8 @@
 			"layoutMode": "Layout",
 			"auxiliaryLineDisplay": "Auxiliary Line Display",
 			"views": "Views",
-			"showOutline": "Outline"
+			"showOutline": "Outline",
+			"showBpmPanel": "BPM"
 		},
 		"previewMode": {
 			"lyrics": "Lyrics",
@@ -357,7 +358,9 @@
 		"playbackRate": "Playback rate",
 		"clickToLoadMusic": "Click the icon button to load music",
 		"playPause": "Play / pause music",
-		"expandSpectrogram": "Expand / collapse spectrogram"
+		"expandSpectrogram": "Expand / collapse spectrogram",
+		"bpm": "BPM",
+		"bpmError": "Error"
 	},
 	"audio": {
 		"error": {
@@ -670,6 +673,14 @@
 		"outline": {
 			"emptyLine": "Empty",
 			"title": "Outline"
+		},
+		"bpm": {
+			"title": "BPM",
+			"analyzing": "Analyzing",
+			"halve": "Halve BPM",
+			"double": "Double BPM",
+			"reset": "Reset BPM",
+			"followPlaybackRate": "Follow audio playback speed"
 		}
 	}
 }

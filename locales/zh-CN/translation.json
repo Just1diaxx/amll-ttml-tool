@@ -69,7 +69,8 @@
 			"layoutMode": "布局模式",
 			"auxiliaryLineDisplay": "辅助行显示",
 			"views": "视图",
-			"showOutline": "大纲"
+			"showOutline": "大纲",
+			"showBpmPanel": "BPM"
 		},
 		"previewMode": {
 			"lyrics": "歌词",
@@ -357,7 +358,9 @@
 		"playbackRate": "播放速度",
 		"clickToLoadMusic": "点击图标按钮以加载音乐",
 		"playPause": "播放 / 暂停音乐",
-		"expandSpectrogram": "展开 / 收起频谱图"
+		"expandSpectrogram": "展开 / 收起频谱图",
+		"bpm": "BPM",
+		"bpmError": "错误"
 	},
 	"audio": {
 		"error": {
@@ -670,6 +673,14 @@
 		"outline": {
 			"emptyLine": "空",
 			"title": "大纲"
+		},
+		"bpm": {
+			"title": "BPM",
+			"analyzing": "正在分析",
+			"halve": "减半 BPM",
+			"double": "加倍 BPM",
+			"reset": "重置 BPM",
+			"followPlaybackRate": "跟随音频播放倍速"
 		}
 	}
 }

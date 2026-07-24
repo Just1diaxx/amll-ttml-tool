@@ -42,7 +42,7 @@
 	--default-font-family-mono:
 		"Google Sans Code", ui-monospace, SFMono-Regular, "SF Pro Mono",
 		"JetBrains Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
-		monospace;
+		"MiSans", monospace;
 }
 
 ::-webkit-scrollbar-track {
