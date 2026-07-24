@@ -2,6 +2,7 @@ import {
 	EyeFilled,
 	EyeOffFilled,
 	MusicNote2Filled,
+	Timer16Regular,
 } from "@fluentui/react-icons";
 import {
 	Button,
@@ -38,6 +39,7 @@ import { useSpectrogramWorker } from "$/modules/spectrogram/hooks/useSpectrogram
 import { useTimelineEditing } from "$/modules/spectrogram/hooks/useTimelineEditing.ts";
 import {
 	currentPaletteAtom,
+	showBeatLinesAtom,
 	spectrogramContainerWidthAtom,
 	spectrogramGainAtom,
 	spectrogramHeightAtom,
@@ -48,6 +50,7 @@ import { isDraggingAtom } from "$/modules/spectrogram/states/dnd.ts";
 import { selectedLinesAtom, showUnselectedLinesAtom } from "$/states/main.ts";
 import { msToTimestamp } from "$/utils/timestamp.ts";
 import styles from "./AudioSpectrogram.module.css";
+import { BeatLinesOverlay } from "./BeatLinesOverlay.tsx";
 import { LyricTimelineOverlay } from "./LyricTimelineOverlay.tsx";
 import {
 	type ISpectrogramContext,
@@ -79,6 +82,7 @@ export const AudioSpectrogram: FC = () => {
 	const [showUnselectedLines, setShowUnselectedLines] = useAtom(
 		showUnselectedLinesAtom,
 	);
+	const [showBeatLines, setShowBeatLines] = useAtom(showBeatLinesAtom);
 
 	const { height: uiHeight, resizeHandleProps } = useSpectrogramResize({
 		initialHeight: dataHeight,
@@ -525,6 +529,9 @@ export const AudioSpectrogram: FC = () => {
 									)}
 									<SpectrogramContext.Provider value={contextValue}>
 										<Theme appearance="dark">
+											{showBeatLines && (
+												<BeatLinesOverlay clientWidth={containerWidth} />
+											)}
 											<LyricTimelineOverlay
 												clientWidth={containerWidth}
 												hiddenLineIds={showRangePreview ? selectedLines : null}
@@ -552,6 +559,17 @@ export const AudioSpectrogram: FC = () => {
 				</div>
 
 				<div className={`${styles.sidebar} ${styles.rightSidebar}`}>
+					<Tooltip
+						content={t("spectrogram.showBeatLines", "在频谱图上显示拍子")}
+						side="left"
+					>
+						<IconButton
+							variant={showBeatLines ? "solid" : "outline"}
+							onClick={() => setShowBeatLines((prev) => !prev)}
+						>
+							<Timer16Regular />
+						</IconButton>
+					</Tooltip>
 					<Tooltip
 						content={t("spectrogram.showUnselectedLines", "显示未选中行")}
 						side="left"
