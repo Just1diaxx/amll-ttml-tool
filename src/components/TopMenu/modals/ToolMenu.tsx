@@ -1,6 +1,6 @@
 import { Button, DropdownMenu } from "@radix-ui/themes";
-import type { CSSProperties } from "react";
 import { Toolbar } from "radix-ui";
+import type { CSSProperties } from "react";
 import { Trans, useTranslation } from "react-i18next";
 import { useTopMenuActions } from "../useTopMenuActions";
 
@@ -32,6 +32,9 @@ const ToolMenuItems = () => {
 					</DropdownMenu.Item>
 				</DropdownMenu.SubContent>
 			</DropdownMenu.Sub>
+			<DropdownMenu.Item onSelect={menu.onOpenSyllableSmoothing}>
+				{t("topBar.menu.syllableSmoothing", "平滑时间轴...")}
+			</DropdownMenu.Item>
 			<DropdownMenu.Item onSelect={menu.onSyncLineTimestamps}>
 				{t("topBar.menu.syncLineTimestamps", "同步行时间戳")}
 			</DropdownMenu.Item>
