@@ -163,7 +163,16 @@
 			"customBackgroundBrightness": "Brightness",
 			"customBackground": "Custom Background",
 			"customBackgroundEnabled": "Background set",
-			"customBackgroundManage": "Settings"
+			"customBackgroundManage": "Settings",
+			"stretchAlgorithm": "Audio Time-Stretching Algorithm",
+			"stretchAlgorithmDesc": {
+				"spectral": "Spectral (Phase Vocoder): Higher fidelity, but may slightly increase resource usage",
+				"wsola": "WSOLA (Waveform Similarity Overlap-Add): Legacy time-stretching algorithm. Lower audio quality, but lower resource usage"
+			},
+			"stretchAlgorithmOptions": {
+				"spectral": "Spectral",
+				"wsola": "WSOLA"
+			}
 		},
 		"about": {
 			"update": "Update",
