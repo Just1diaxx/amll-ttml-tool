@@ -44,7 +44,7 @@
 	"ribbonBar": {
 		"editMode": {
 			"multipleValues": "Multiple values…",
-			"duration": "持续时间",
+			"duration": "Duration",
 			"showTranslation": "Show Translation Line",
 			"showRomanization": "Show Romanization Line",
 			"showWordRomanizationInput": "Show Per-Word Romanization",
@@ -193,7 +193,17 @@
 			"themeDesc": "Choose from using light, dark, or follow system settings.",
 			"themeLight": "Light",
 			"themeDark": "Dark",
-			"themeAuto": "Auto"
+			"themeAuto": "Auto",
+			"appearanceGroup": "Theme & Appearance",
+			"accentColor": "Accent Color",
+			"accentColorDesc": "Customize interface theme colors and accent highlights.",
+			"ambientGlow": "Ambient Glow Effect",
+			"ambientGlowDesc": "Render dynamic fluid fog and particle glow effects in the background.",
+			"glassStyle": "Frosted Glass Effect",
+			"glassStyleDesc": "Adjust opacity and Gaussian blur intensity for panels and dialogs.",
+			"glassSolid": "Solid",
+			"glassStandard": "Translucent",
+			"glassHyper": "Ultra Clear"
 		}
 	},
 	"topBar": {

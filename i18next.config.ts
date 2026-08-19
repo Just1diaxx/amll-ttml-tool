@@ -4,17 +4,15 @@ export default defineConfig({
 	locales: [
 		"zh-CN",
 		"en-US",
-
-		// 因为缺少这些语言的维护者，暂时不生成它们的翻译键值
-		// "cs-CZ",
-		// "da-DK",
-		// "es-ES",
-		// "fr-FR",
-		// "id-ID",
-		// "pl-PL",
-		// "pt-BR",
-		// "ru-RU",
-		// "sk-SK",
+		"cs-CZ",
+		"da-DK",
+		"es-ES",
+		"fr-FR",
+		"id-ID",
+		"pl-PL",
+		"pt-BR",
+		"ru-RU",
+		"sk-SK",
 	],
 	extract: {
 		input: "src/**/*.{js,jsx,ts,tsx}",

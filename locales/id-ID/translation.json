@@ -15,10 +15,6 @@
 		"empty": {
 			"title": "Tidak ada baris lirik",
 			"description": "Tambahkan baris lirik baru di panel atas atau buka / impor lirik yang sudah ada dari bilah menu"
-		},
-		"useMetadataName": {
-			"title": "Gunakan nama metadata?",
-			"description": "Apakah ingin menggunakan \"{name}\" sebagai nama file?"
 		}
 	},
 	"confirmDialog": {
@@ -39,6 +35,10 @@
 		"importFile": {
 			"title": "Konfirmasi impor lirik",
 			"description": "File saat ini memiliki perubahan yang belum disimpan. Jika dilanjutkan, perubahan ini akan hilang. Anda yakin ingin mengimpor lirik?"
+		},
+		"useMetadataName": {
+			"title": "Gunakan nama metadata?",
+			"description": "Gunakan \"{name}\" sebagai nama berkas?"
 		}
 	},
 	"ribbonBar": {
@@ -66,7 +66,11 @@
 			"translatedLyric": "Lirik Terjemahan",
 			"romanLyric": "Lirik Romanisasi",
 			"layoutMode": "Mode Tata Letak",
-			"auxiliaryLineDisplay": "Tampilan Baris Tambahan"
+			"auxiliaryLineDisplay": "Tampilan Baris Tambahan",
+			"duration": "Durasi",
+			"views": "Tampilan",
+			"showOutline": "Outline",
+			"showBpmPanel": "BPM"
 		},
 		"previewMode": {
 			"lyrics": "Lirik",
@@ -91,7 +95,8 @@
 			"keyBindingReference": "Referensi Pintasan Sinkronisasi",
 			"startSync": "Mulai Sinkronisasi",
 			"continuousSync": "Sinkronisasi Berlanjut",
-			"endSync": "Selesai Sinkronisasi"
+			"endSync": "Selesai Sinkronisasi",
+			"bgLyricIgnoreSync": "Abaikan Vokal Latar"
 		},
 		"loading": "Memuat panel…"
 	},
@@ -101,16 +106,16 @@
 				"simple": "Mode Sederhana",
 				"advance": "Mode Lanjutan"
 			},
-			"customBackground": "Latar Belakang Kostum",
-			"customBackgroundDesc": "Pilih gambar sebagai latar belakang.",
+			"customBackground": "Latar Belakang Kustom",
+			"customBackgroundDesc": "Pilih gambar untuk digunakan sebagai latar belakang.",
 			"customBackgroundPick": "Pilih Gambar",
-			"customBackgroundClear": "Hapus",
+			"customBackgroundClear": "Bersihkan",
 			"customBackgroundManage": "Pengaturan",
-			"customBackgroundEnabled": "Latar belakang telah diatur",
+			"customBackgroundEnabled": "Latar belakang diatur",
 			"customBackgroundOpacity": "Opasitas",
-			"customBackgroundOpacityWarning": "Jika nilai ini terlalu tinggi, mungkin sulit untuk melihat konten di halaman.",
-			"customBackgroundMask": "Overlay",
-			"customBackgroundBlur": "Radius Blur",
+			"customBackgroundOpacityWarning": "Jika nilai ini terlalu tinggi, konten halaman mungkin sulit dibaca.",
+			"customBackgroundMask": "Topeng",
+			"customBackgroundBlur": "Radius Buram",
 			"customBackgroundBrightness": "Kecerahan",
 			"language": "Bahasa Antarmuka",
 			"languageDesc": "Pilih bahasa tampilan antarmuka",
@@ -143,7 +148,22 @@
 				"enable": "Aktifkan Simpan Otomatis",
 				"interval": "Interval Simpan (menit)",
 				"limit": "Jumlah Cadangan yang Disimpan"
-			}
+			},
+			"translationOutputMode": "Gaya Ekspor Terjemahan",
+			"translationOutputModeDesc": {
+				"line1": "Gaya AMLL menyematkan terjemahan baris secara langsung sebagai x-translation,",
+				"line2": "x-bg memiliki waktu mulai dan selesai sendiri.",
+				"line3": "Gaya Apple Music menuliskan terjemahan ke iTunesMetadata dalam <head>,",
+				"line4": "tetapi x-bg tidak memiliki waktu baris."
+			},
+			"translationOutputModeOptions": {
+				"amll": "Gaya AMLL",
+				"appleMusic": "Gaya Apple Music"
+			},
+			"defaultTtmlAuthorGithub": "ID GitHub Penulis TTML Default",
+			"defaultTtmlAuthorGithubDesc": "Diisi otomatis jika ttmlAuthorGithub kosong.",
+			"defaultTtmlAuthorGithubLogin": "Nama Pengguna GitHub Penulis TTML Default",
+			"defaultTtmlAuthorGithubLoginDesc": "Diisi otomatis jika ttmlAuthorGithubLogin kosong."
 		},
 		"about": {
 			"update": "Pembaruan Perangkat Lunak",
@@ -157,13 +177,33 @@
 			"display": "Tampilan",
 			"timing": "Sinkronisasi",
 			"playback": "Pemutaran",
-			"autosave": "Simpan Otomatis"
+			"autosave": "Simpan Otomatis",
+			"translationOutput": "Ekspor",
+			"metadata": "Metadata"
 		},
 		"spectrogram": {
 			"palette": "Skema Warna",
 			"paletteCustom": "Kostum",
 			"gradientEditorDesc": "Pos 0.0 sesuai bagian paling sunyi, 1.0 sesuai bagian paling keras. Disarankan makin besar Pos, menggunakan warna yang lebih cerah.",
-			"addStop": "Tambah Warna"
+			"addStop": "Tambah Warna",
+			"customPaletteTitle": "Skema Warna Spektrogram Kustom"
+		},
+		"personalization": {
+			"appearanceGroup": "Tema & Tampilan",
+			"theme": "Tema Tampilan",
+			"themeDesc": "Pilih terang, gelap, atau ikuti pengaturan sistem.",
+			"themeLight": "Terang",
+			"themeDark": "Gelap",
+			"themeAuto": "Otomatis",
+			"accentColor": "Warna Aksen",
+			"accentColorDesc": "Sesuaikan warna tema antarmuka dan efek sorotan.",
+			"ambientGlow": "Efek Cahaya Sekitar",
+			"ambientGlowDesc": "Render kabut dinamis dan efek partikel di latar belakang.",
+			"glassStyle": "Efek Kaca Buram",
+			"glassStyleDesc": "Atur opasitas dan intensitas buram Gaussian untuk panel dan dialog.",
+			"glassSolid": "Padat",
+			"glassStandard": "Translusen",
+			"glassHyper": "Sangat Jernih"
 		}
 	},
 	"topBar": {
@@ -199,9 +239,9 @@
 			"syncLineTimestamps": "Sinkronkan Penanda Waktu Baris",
 			"perWordRomanization": {
 				"index": "Romanisasi Per Kata",
-				"check": "Periksa Konsistensi Romanisasi Per Kata",
-				"distribute": "Distribusikan Romanisasi Otomatis...",
-				"autoRuby": "Anotasi Ruby Otomatis"
+				"check": "Periksa Romanisasi Per Kata",
+				"distribute": "Distribusikan Romanisasi...",
+				"autoRuby": "Ruby Otomatis"
 			},
 			"help": "Bantuan",
 			"helpDoc": "Panduan Pengguna",
@@ -228,14 +268,7 @@
 	},
 	"header": {
 		"status": {
-			"saving": "Menyimpan...",
-			"pending": "Menyimpan...",
-			"savedAt": "Tersimpan",
-			"saved": "Tersimpan"
-		},
-		"popover": {
-			"filename": "Nama Berkas",
-			"versionHistory": "Riwayat Versi..."
+			"autoSavedAt": "Tersimpan otomatis pada {time}"
 		}
 	},
 	"contextMenu": {
@@ -251,7 +284,9 @@
 		"replaceWord": "Ganti Kata…",
 		"combineWords": "Gabungkan Kata",
 		"moveFollowingWordToNewLine": "Pindahkan Kata Berikutnya ke Baris Baru",
-		"moveWordToNewLine": "Pindahkan Kata yang Dipilih ke Baris Baru"
+		"moveWordToNewLine": "Pindahkan Kata yang Dipilih ke Baris Baru",
+		"pasteTTML": "Tempel TTML",
+		"newLine": "Baris baru"
 	},
 	"settingsDialog": {
 		"title": "Preferensi",
@@ -305,28 +340,54 @@
 			}
 		},
 		"tab": {
-			"common": "Umum",
 			"keybindings": "Pintasan Keyboard",
-			"spectrogram": "Spektrogram"
+			"spectrogram": "Spektrogram",
+			"general": "Umum",
+			"appearance": "Tampilan",
+			"about": "Tentang"
 		}
 	},
 	"error": {
 		"unsupportedFileFormat": "Format file tidak didukung: {ext}",
-		"openFileFailed": "Gagal membuka berkas"
+		"openFileFailed": "Gagal membuka berkas",
+		"ttml": {
+			"kind": {
+				"AttrError": "Kesalahan Atribut XML",
+				"EntityError": "Entitas XML Tidak Diketahui",
+				"InvalidTimestamp": "Format Stempel Waktu Tidak Valid",
+				"MissingAttribute": "Atribut Wajib Hilang",
+				"UnexpectedEof": "Akhir Berkas Tidak Diharapkan",
+				"XmlError": "Kesalahan Sintaks XML",
+				"ParseError": "Kesalahan Analisis Umum"
+			},
+			"suggestion": {
+				"AttrError": "Harap periksa apakah atribut XML diformat dengan benar.",
+				"EntityError": "Periksa apakah referensi entitas terdefinisi XML yang digunakan valid.",
+				"InvalidTimestamp": "Format stempel waktu yang diizinkan adalah 'hh:mm:ss.sss'; nol di depan dapat diabaikan. Contoh: '1:03:36.120'.",
+				"MissingAttribute": "Harap periksa log di atas dan tambahkan atribut yang diperlukan.",
+				"UnexpectedEof": "Pastikan semua tag yang terbuka (seperti </tt> atau </body>) ditutup dengan benar.",
+				"XmlError": "Harap periksa berkas untuk kesalahan sintaks XML.",
+				"ParseError": "Harap lihat log di atas dan periksa apakah format berkas sudah benar."
+			},
+			"copied": "Disalin ke papan klip",
+			"copyFailed": "Gagal menyalin",
+			"title": "Gagal Memproses TTML",
+			"subtitle": "Terjadi kesalahan saat memproses berkas TTML.",
+			"close": "Tutup",
+			"copyError": "Salin Log Kesalahan"
+		},
+		"pasteClipboardFailed": "Gagal membaca papan klip"
 	},
 	"audioPanel": {
 		"volume": "Volume",
 		"playbackRate": "Kecepatan Putar",
 		"clickToLoadMusic": "Klik ikon untuk memuat musik",
 		"playPause": "Putar / Jeda Musik",
-		"expandSpectrogram": "Buka / Tutup Spektrogram"
+		"expandSpectrogram": "Buka / Tutup Spektrogram",
+		"bpm": "BPM",
+		"bpmError": "Kesalahan"
 	},
 	"audio": {
-		"status": {
-			"transcoding": "Gagal mendekode, mencoba melakukan transkode audio...",
-			"loading": "Memuat audio...",
-			"processing": "Sedang memproses..."
-		},
 		"error": {
 			"workerError": "Terjadi kesalahan saat memproses audio"
 		}
@@ -366,9 +427,10 @@
 		"deleteSuccess": "Berhasil dihapus",
 		"time": "Waktu",
 		"restore": "Pulihkan",
-		"about": "Tentang",
 		"remove": "Hapus",
-		"clickToSet": "Klik untuk mengatur"
+		"clickToSet": "Klik untuk mengatur",
+		"copyTo": "Salin ke",
+		"moveTo": "Pindahkan ke"
 	},
 	"lyricLineView": {
 		"translatedLabel": "Terjemahan:",
@@ -469,8 +531,7 @@
 		"bgLyricPrefix": "Prefiks Lirik Latar",
 		"duetLyricPrefix": "Prefiks Lirik Duet",
 		"enableEmptyBeat": "Aktifkan Ketukan Kosong",
-		"emptyBeatSymbol": "Simbol Ketukan Kosong",
-		"importFailed": "Gagal mengimpor lirik teks polos, mohon periksa apakah teks masukan atau pengaturan impor sudah benar"
+		"emptyBeatSymbol": "Simbol Ketukan Kosong"
 	},
 	"metadataDialog": {
 		"openLink": "Buka Tautan",
@@ -499,14 +560,10 @@
 			"ttmlAuthorGithubLoginInvalidMsg": "Username GitHub tidak boleh lebih dari 39 karakter yang terdiri dari huruf, angka, atau tanda minus"
 		},
 		"title": "Editor Metadata",
-		"key": "Tipe Metadata",
-		"value": "Nilai",
-		"empty": "Tidak ada metadata",
-		"addKeyValue": "Tambah Key-Value Baru",
 		"customKey": "Nama Kunci Kustom",
-		"addPresets": "Tambah Semua Kunci Standar",
 		"clear": "Kosongkan",
-		"info": "Pelajari Lebih Lanjut"
+		"info": "Pelajari Lebih Lanjut",
+		"emptyItem": "Belum ada entri yang ditambahkan ke bagian ini."
 	},
 	"submitToAMLLDB": {
 		"validation": {
@@ -538,24 +595,7 @@
 		"futureUse": "Lirik ini nantinya akan digunakan sebagai sumber lirik TTML standar oleh aplikasi keluarga AMLL!",
 		"rightsWarning": "Jika Anda sangat memperhatikan hak kepemilikan lirik, mohon jangan kirimkan lirik ya!",
 		"submitInstructions": "Silakan masukkan informasi berikut dan lanjutkan ke halaman pengajuan Issue GitHub!",
-		"closeWarning": "Tutup peringatan di atas",
-		"dbType": "Tipe Database Lirik",
-		"officialDb": "Database Resmi",
-		"userDb": "Database Pengguna",
-		"allDb": "Semua Database",
-		"officialDbDesc": "Pengiriman ke database resmi memerlukan tinjauan manual untuk memastikan lirik memenuhi persyaratan dasar, penanda waktu, dan efek sebelum ditambahkan ke database.\nIni memastikan kualitas lirik Anda dan memungkinkan lirik ditampilkan dengan hasil yang baik. Direkomendasikan untuk mengirim ke sini.",
-		"userDbDesc": "Pengiriman ke database pengguna hanya memerlukan tinjauan bot tanpa masalah serius sebelum ditambahkan ke database, tidak perlu tinjauan manual.\nNamun, jika ada masalah dengan konten dan efek, itu hanya dapat diperbaiki dengan mengirim ulang, dan verifikasi manual tidak dapat dilakukan untuk memastikan kualitas.",
-		"bothDbDesc": "Keduanya juga tidak buruk, ketahui saja situasinya\nSetelah mengunggah, halaman pengiriman yang sesuai dengan setiap repositori akan dibuka masing-masing. Silakan tekan buat issue secara manual di masing-masing repositori untuk mengirim.",
-		"genFromMetadata": "Hasilkan dari metadata",
-		"musicName": "Nama Musik",
-		"musicNameHint": "Format yang disarankan: Artis - Judul Lagu, agar pengelola repositori dapat mengonfirmasi apakah lagu Anda tersedia",
-		"submitReason": "Alasan Pengiriman",
-		"newLyric": "Pengiriman Lirik Baru",
-		"fixLyric": "Koreksi Lirik yang Sudah Ada",
-		"comment": "Komentar",
-		"commentPlaceholder": "Ada hal lain yang perlu ditambahkan?",
-		"fixIssues": "Masalah berikut ditemukan, silakan perbaiki sebelum mengirim:",
-		"submitAction": "Unggah Lirik dan Buat Issue"
+		"closeWarning": "Tutup peringatan di atas"
 	},
 	"splitWordDialog": {
 		"spaceCount": "Spasi x{count}",
@@ -617,30 +657,64 @@
 		"appName": "Apple Music-like lyrics TTML Tools",
 		"description": "Alat pengeditan dan penyelarasan waktu lirik TTML untuk ekosistem lirik bergaya Apple Music",
 		"buildDate": "Tanggal Pembuatan: {date}",
-		"gitCommit": "Git Commit: {commit}"
+		"gitCommit": "Git Commit: {commit}",
+		"unknown": "unknown"
 	},
 	"spectrogram": {
 		"invalidEndTime": "Tidak dapat memilih waktu akhir ini",
 		"noAudioLoaded": "Mohon muat file audio terlebih dahulu untuk merender spektrogram",
 		"loadAudio": "Muat File Audio",
-		"showUnselectedLines": "Tampilkan Baris yang Tidak Dipilih"
+		"showUnselectedLines": "Tampilkan Baris yang Tidak Dipilih",
+		"clickToCalibrateBeatN": "Klik untuk mengkalibrasi ketukan ke-{n}",
+		"decoding": "Mendekode audio, harap tunggu...",
+		"showBeatLines": "Tampilkan ketukan pada spektrogram"
 	},
 	"pwa": {
 		"offlineReady": "Situs berhasil disimpan dalam cache offline, Anda bisa mengaksesnya tanpa internet nanti",
 		"updateRefresh": "Situs telah diperbarui, segarkan halaman untuk menggunakan versi terbaru!",
 		"refresh": "Segarkan"
 	},
-	"latencyTest": {
-		"title": "Tes Latensi Sinkronisasi",
-		"description": "Pilih BPM yang Anda sukai, lalu tekan tombol sinkronisasi pada setiap bunyi bip untuk mengukur perbedaan latensi audio/input.",
-		"fastest": "Tercepat",
-		"slowest": "Terlambat",
-		"unmeasured": "Belum diukur",
-		"perfect": "Sempurna 0ms",
-		"faster": "Lebih Cepat {ms}ms",
-		"slower": "Lebih Lambat {ms}ms",
-		"bpm": "BPM",
-		"start": "Mulai",
-		"stop": "Selesai"
+	"sidebar": {
+		"outline": {
+			"emptyLine": "Kosong",
+			"title": "Outline"
+		},
+		"bpm": {
+			"title": "BPM",
+			"analyzing": "Menganalisis",
+			"halve": "Bagi Dua BPM",
+			"double": "Gandakan BPM",
+			"reset": "Reset BPM",
+			"followPlaybackRate": "Ikuti kecepatan pemutaran audio",
+			"showBeatLines": "Tampilkan ketukan pada spektrogram",
+			"slidingWindowTip": "Hanya 10 titik kalibrasi terakhir yang digunakan untuk menghitung BPM",
+			"manualCalibration": "Kalibrasi ketukan manual",
+			"spectrogramCalibration": "Kalibrasi dengan Spektrogram",
+			"tapInstructionPrefix": "Tekan ",
+			"tapInstructionSuffix": " atau klik di sini sesuai ketukan",
+			"clickOnSpectrogramToCalibrate": "Klik pada spektrogram untuk mengkalibrasi"
+		}
+	},
+	"latencyTestDialog": {
+		"title": "Uji Latensi Offset Waktu",
+		"description": "Pilih BPM yang Anda sukai, lalu tekan tombol {key} pada setiap bunyi bip untuk mengukur latensi audio dan input.",
+		"latencyDisplay": {
+			"fastest": "Tercepat",
+			"current": {
+				"none": "Belum Diukur",
+				"fast": "Terlalu Cepat",
+				"slow": "Terlalu Lambat",
+				"perfect": "Sempurna"
+			},
+			"slowest": "Terlambat"
+		},
+		"bpmInputLabel": "Tempo (BPM)",
+		"button": {
+			"stop": "Hentikan",
+			"start": "Mulai"
+		}
+	},
+	"lyricEditor": {
+		"locate": "lokasikan"
 	}
 }

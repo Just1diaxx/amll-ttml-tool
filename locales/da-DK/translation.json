@@ -35,6 +35,10 @@
 		"importFile": {
 			"title": "Bekræft import af sangtekster",
 			"description": "Du har ikke-gemte ændringer. Hvis du fortsætter, vil disse ændringer gå tabt. Er du sikker på, at du vil importere nye sangtekster?"
+		},
+		"useMetadataName": {
+			"title": "Brug metadatanavn?",
+			"description": "Vil du bruge \"{name}\" som filnavn?"
 		}
 	},
 	"ribbonBar": {
@@ -62,7 +66,11 @@
 			"translatedLyric": "Oversættelse",
 			"romanLyric": "Romanisering",
 			"layoutMode": "Layout",
-			"auxiliaryLineDisplay": "Visning af hjælpelinje"
+			"auxiliaryLineDisplay": "Visning af hjælpelinje",
+			"duration": "Varighed",
+			"views": "Visninger",
+			"showOutline": "Disposition",
+			"showBpmPanel": "BPM"
 		},
 		"previewMode": {
 			"lyrics": "Sangtekster",
@@ -87,7 +95,8 @@
 			"keyBindingReference": "Genvejsoversigt",
 			"startSync": "Markér start",
 			"continuousSync": "Bekræft",
-			"endSync": "Markér slut"
+			"endSync": "Markér slut",
+			"bgLyricIgnoreSync": "Ignorer baggrundsvokal"
 		},
 		"loading": "Indlæser panel…"
 	},
@@ -128,7 +137,33 @@
 				"enable": "Aktiver automatisk lagring",
 				"interval": "Lagringsinterval (minutter)",
 				"limit": "Antal snapshots at beholde"
-			}
+			},
+			"customBackground": "Tilpasset baggrund",
+			"customBackgroundDesc": "Vælg et billede som baggrund.",
+			"customBackgroundPick": "Vælg billede",
+			"customBackgroundClear": "Ryd",
+			"customBackgroundOpacity": "Uigennemsigtighed",
+			"customBackgroundOpacityWarning": "Hvis denne værdi er for høj, kan sideindholdet være svært at læse.",
+			"customBackgroundMask": "Maske",
+			"customBackgroundBlur": "Sløringsradius",
+			"customBackgroundBrightness": "Lysstyrke",
+			"customBackgroundEnabled": "Baggrund indstillet",
+			"customBackgroundManage": "Indstillinger",
+			"translationOutputMode": "Format for oversættelsesekskport",
+			"translationOutputModeDesc": {
+				"line1": "AMLL-stil indlejrer linjeoversættelser inline som x-translation,",
+				"line2": "x-bg har sine egne start- og sluttidspunkter.",
+				"line3": "Apple Music-stil skriver oversættelser til iTunesMetadata i <head>,",
+				"line4": "men x-bg har ikke linjetid."
+			},
+			"translationOutputModeOptions": {
+				"amll": "AMLL-stil",
+				"appleMusic": "Apple Music-stil"
+			},
+			"defaultTtmlAuthorGithub": "Standard TTML-forfatter GitHub ID",
+			"defaultTtmlAuthorGithubDesc": "Udfyldes automatisk, hvis ttmlAuthorGithub er tomt.",
+			"defaultTtmlAuthorGithubLogin": "Standard TTML-forfatter GitHub-brugernavn",
+			"defaultTtmlAuthorGithubLoginDesc": "Udfyldes automatisk, hvis ttmlAuthorGithubLogin er tomt."
 		},
 		"about": {
 			"update": "Opdatering",
@@ -142,13 +177,33 @@
 			"display": "Visning",
 			"timing": "Timing",
 			"playback": "Afspilning",
-			"autosave": "Automatisk lagring"
+			"autosave": "Automatisk lagring",
+			"translationOutput": "Eksport",
+			"metadata": "Metadata"
 		},
 		"spectrogram": {
 			"palette": "Farvepalet",
 			"paletteCustom": "Brugerdefineret",
 			"gradientEditorDesc": "En Pos-værdi på 0.0 svarer til den roligste del, og 1.0 svarer til den højeste del. Det anbefales at bruge lysere farver for større Pos-værdier.",
-			"addStop": "Tilføj farvepunkt"
+			"addStop": "Tilføj farvepunkt",
+			"customPaletteTitle": "Tilpasset spektrogram-farveskema"
+		},
+		"personalization": {
+			"appearanceGroup": "Tema og udseende",
+			"theme": "Udseendetema",
+			"themeDesc": "Vælg lys, mørk eller følg systemindstillingerne.",
+			"themeLight": "Lys",
+			"themeDark": "Mørk",
+			"themeAuto": "Automatisk",
+			"accentColor": "Accentfarve",
+			"accentColorDesc": "Tilpas grænsefladens temafarver og fremhævningseffekter.",
+			"ambientGlow": "Omgivende lyseffekt",
+			"ambientGlowDesc": "Render dynamisk tåge og partikeleffekter i baggrunden.",
+			"glassStyle": "Frostet glaseffekt",
+			"glassStyleDesc": "Juster gennemsigtighed og Gaussisk sløringsintensitet for paneler og dialoger.",
+			"glassSolid": "Fast",
+			"glassStandard": "Halvgennemsigtig",
+			"glassHyper": "Ultra klar"
 		}
 	},
 	"topBar": {
@@ -182,7 +237,6 @@
 			"rubySegment": "Ruby Segmentating",
 			"advancedSegment": "Avanceret segmentering...",
 			"syncLineTimestamps": "Synkroniser linjetidsstempler",
-			"distributeRomanization": "Distribuer romanisering...",
 			"help": "Hjælp",
 			"helpDoc": "Dokumentation (CN)",
 			"importLyric": {
@@ -203,19 +257,18 @@
 				"toYRC": "Eksportér til YRC",
 				"toLrcfySylb": "Eksportér til Lyricify Syllable",
 				"toASS": "Eksportér til ASS-undertekster"
+			},
+			"perWordRomanization": {
+				"index": "Omskrivning pr. ord",
+				"distribute": "Fordel omskrivning...",
+				"check": "Tjek omskrivning pr. ord",
+				"autoRuby": "Automatisk Ruby"
 			}
 		}
 	},
 	"header": {
 		"status": {
-			"saving": "Gemmer...",
-			"pending": "Gemmer...",
-			"savedAt": "Sidst gemt kl.",
-			"saved": "Gemt"
-		},
-		"popover": {
-			"filename": "Filnavn",
-			"versionHistory": "Versionshistorik..."
+			"autoSavedAt": "Gemt automatisk kl. {time}"
 		}
 	},
 	"contextMenu": {
@@ -231,7 +284,9 @@
 		"replaceWord": "Erstat ord…",
 		"combineWords": "Kombiner ord",
 		"moveFollowingWordToNewLine": "Flyt følgende til ny linje",
-		"moveWordToNewLine": "Flyt {count, plural, one {ord} other {ord}} til ny linje"
+		"moveWordToNewLine": "Flyt {count, plural, one {ord} other {ord}} til ny linje",
+		"pasteTTML": "Indsæt TTML",
+		"newLine": "Ny linje"
 	},
 	"settingsDialog": {
 		"title": "Indstillinger",
@@ -280,31 +335,59 @@
 				"Sync": "Synk",
 				"Audio": "Lyd",
 				"Spectrogram": "Spektrogram"
-			}
+			},
+			"moveFirstWordAndPlay": "settingsDialog.keybindings.moveFirstWordAndPlay",
+			"moveLastWordAndPlay": "settingsDialog.keybindings.moveLastWordAndPlay"
 		},
 		"tab": {
-			"common": "Generelt",
 			"keybindings": "Tastaturgenveje",
-			"spectrogram": "Spektrogram"
+			"spectrogram": "Spektrogram",
+			"general": "Generelt",
+			"appearance": "Udseende",
+			"about": "Om"
 		}
 	},
 	"error": {
 		"unsupportedFileFormat": "Ikke-understøttet filformat: {ext}",
-		"openFileFailed": "Kunne ikke åbne fil"
+		"openFileFailed": "Kunne ikke åbne fil",
+		"ttml": {
+			"kind": {
+				"AttrError": "XML-attributfejl",
+				"EntityError": "Ukendt XML-entitet",
+				"InvalidTimestamp": "Ugyldigt tidsstempelformat",
+				"MissingAttribute": "Manglende påkrævet attribut",
+				"UnexpectedEof": "Uventet filafslutning",
+				"XmlError": "XML-syntaksfejl",
+				"ParseError": "Generel fortolkningsfejl"
+			},
+			"suggestion": {
+				"AttrError": "Tjek venligst, at XML-attributterne er korrekt formateret.",
+				"EntityError": "Tjek, at de anvendte foruddefinerede XML-entitetsreferencer er gyldige.",
+				"InvalidTimestamp": "Det tilladte tidsstempelformat er 'hh:mm:ss.sss'; indledende nuller kan udelades. F.eks. '1:03:36.120'.",
+				"MissingAttribute": "Tjek venligst loggen ovenfor og tilføj de påkrævede attributter.",
+				"UnexpectedEof": "Sørg for, at alle åbne tags (f.eks. </tt> eller </body>) er lukket korrekt.",
+				"XmlError": "Tjek venligst filen for XML-syntaksfejl.",
+				"ParseError": "Se venligst loggen ovenfor og tjek, at filformatet er korrekt."
+			},
+			"copied": "Kopieret til udklipsholder",
+			"copyFailed": "Kopiering mislykkedes",
+			"title": "Kunne ikke behandle TTML",
+			"subtitle": "Der opstod en fejl under behandling af TTML-filen.",
+			"close": "Luk",
+			"copyError": "Kopier fejllog"
+		},
+		"pasteClipboardFailed": "Læsning af udklipsholder mislykkedes"
 	},
 	"audioPanel": {
 		"volume": "Lydstyrke",
 		"playbackRate": "Afspilningshastighed",
 		"clickToLoadMusic": "Klik på ikonet for at indlæse musik",
 		"playPause": "Afspil / pause musik",
-		"expandSpectrogram": "Udvid / skjul spektrogram"
+		"expandSpectrogram": "Udvid / skjul spektrogram",
+		"bpm": "BPM",
+		"bpmError": "Fejl"
 	},
 	"audio": {
-		"status": {
-			"transcoding": "Dekodning mislykkedes, forsøger at transkode lyd...",
-			"loading": "Indlæser lyd...",
-			"processing": "Behandler..."
-		},
 		"error": {
 			"workerError": "Fejl ved behandling af lyd"
 		}
@@ -344,9 +427,10 @@
 		"deleteSuccess": "Sletning vellykket",
 		"time": "Tid",
 		"restore": "Gendan",
-		"about": "Om",
 		"remove": "Fjern",
-		"clickToSet": "Klik for at indstille "
+		"clickToSet": "Klik for at indstille ",
+		"copyTo": "Kopier til",
+		"moveTo": "Flyt til"
 	},
 	"lyricLineView": {
 		"translatedLabel": "Oversættelse:",
@@ -476,14 +560,10 @@
 			"ttmlAuthorGithubLoginInvalidMsg": "GitHub-brugernavn skal være alfanumerisk eller bindestreger, op til 39 tegn"
 		},
 		"title": "Metadataeditor",
-		"key": "Nøgle",
-		"value": "Værdi",
-		"empty": "Ingen metadata",
-		"addKeyValue": "Tilføj nyt nøgle-værdi-par",
 		"customKey": "Brugerdefineret nøgle",
-		"addPresets": "Tilføj alle forudindstillede nøgler",
 		"clear": "Ryd",
-		"info": "Lær mere"
+		"info": "Lær mere",
+		"emptyItem": "Der er endnu ikke tilføjet elementer til denne sektion."
 	},
 	"submitToAMLLDB": {
 		"validation": {
@@ -577,17 +657,64 @@
 		"appName": "Apple Music-lignende Sangtekst TTML Værktøj",
 		"description": "Et ord-for-ord TTML redigerings- og tidslinjeværktøj til Apple Music-lignende sangtekster",
 		"buildDate": "Byggedato: {date}",
-		"gitCommit": "Git Commit: {commit}"
+		"gitCommit": "Git Commit: {commit}",
+		"unknown": "unknown"
 	},
 	"spectrogram": {
 		"invalidEndTime": "Kan ikke vælge denne sluttid",
 		"noAudioLoaded": "Indlæs venligst en lydfil for at gengive spektrogrammet",
 		"loadAudio": "Indlæs en lydfil",
-		"showUnselectedLines": "Vis ikke-valgte linjer"
+		"showUnselectedLines": "Vis ikke-valgte linjer",
+		"clickToCalibrateBeatN": "Klik for at kalibrere slag {n}",
+		"decoding": "Afkoder lyd, vent venligst...",
+		"showBeatLines": "Vis slag på spektrogram"
 	},
 	"pwa": {
 		"offlineReady": "Websted succesfuldt cachet til offline brug",
 		"updateRefresh": "Websted opdateret, opdater for at bruge den seneste version!",
 		"refresh": "Opdater"
+	},
+	"sidebar": {
+		"outline": {
+			"emptyLine": "Tom",
+			"title": "Disposition"
+		},
+		"bpm": {
+			"title": "BPM",
+			"analyzing": "Analyserer",
+			"halve": "Halver BPM",
+			"double": "Fordobl BPM",
+			"reset": "Nulstil BPM",
+			"followPlaybackRate": "Følg afspilningshastighed",
+			"showBeatLines": "Vis slag på spektrogram",
+			"slidingWindowTip": "Kun de seneste 10 kalibreringspunkter bruges til at beregne BPM",
+			"manualCalibration": "Manuel kalibrering ved tryk",
+			"spectrogramCalibration": "Kalibrer med spektrogram",
+			"tapInstructionPrefix": "Tryk på ",
+			"tapInstructionSuffix": " eller klik her i takten",
+			"clickOnSpectrogramToCalibrate": "Klik på spektrogrammet for at kalibrere"
+		}
+	},
+	"latencyTestDialog": {
+		"title": "Test af tidsforskydningslatens",
+		"description": "Vælg dit foretrukne BPM, og tryk derefter på tasten {key} ved hvert bip for at måle lyd- og inputlatens.",
+		"latencyDisplay": {
+			"fastest": "Hurtigste",
+			"current": {
+				"none": "Ikke målt",
+				"fast": "For tidlig",
+				"slow": "For sent",
+				"perfect": "Perfekt"
+			},
+			"slowest": "Langsomste"
+		},
+		"bpmInputLabel": "Tempo (BPM)",
+		"button": {
+			"stop": "Stop",
+			"start": "Start"
+		}
+	},
+	"lyricEditor": {
+		"locate": "find"
 	}
 }

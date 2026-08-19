@@ -35,6 +35,10 @@
 		"importFile": {
 			"title": "Подтвердить импорт текста",
 			"description": "У вас есть несохранённые изменения. Если продолжить, они будут потеряны. Вы уверены, что хотите импортировать новый текст?"
+		},
+		"useMetadataName": {
+			"title": "Использовать имя из метаданных?",
+			"description": "Использовать «{name}» в качестве имени файла?"
 		}
 	},
 	"ribbonBar": {
@@ -62,7 +66,11 @@
 			"translatedLyric": "Перевод",
 			"romanLyric": "Романизация",
 			"layoutMode": "Макет",
-			"auxiliaryLineDisplay": "Отображение вспомогательной строки"
+			"auxiliaryLineDisplay": "Отображение вспомогательной строки",
+			"duration": "Длительность",
+			"views": "Виды",
+			"showOutline": "Структура",
+			"showBpmPanel": "BPM"
 		},
 		"previewMode": {
 			"lyrics": "Текст",
@@ -87,7 +95,8 @@
 			"keyBindingReference": "Справка по горячим клавишам",
 			"startSync": "Отметить начало",
 			"continuousSync": "Подтвердить",
-			"endSync": "Отметить конец"
+			"endSync": "Отметить конец",
+			"bgLyricIgnoreSync": "Игнорировать фоновый вокал"
 		},
 		"loading": "Загрузка панели…"
 	},
@@ -128,7 +137,33 @@
 				"enable": "Включить автосохранение",
 				"interval": "Интервал сохранения (минуты)",
 				"limit": "Количество сохраняемых снимков"
-			}
+			},
+			"customBackground": "Пользовательский фон",
+			"customBackgroundDesc": "Выберите изображение в качестве фона.",
+			"customBackgroundPick": "Выбрать изображение",
+			"customBackgroundClear": "Очистить",
+			"customBackgroundOpacity": "Непрозрачность",
+			"customBackgroundOpacityWarning": "Если значение слишком велико, содержимое страницы может быть трудно прочитать.",
+			"customBackgroundMask": "Маска",
+			"customBackgroundBlur": "Радиус размытия",
+			"customBackgroundBrightness": "Яркость",
+			"customBackgroundEnabled": "Фон установлен",
+			"customBackgroundManage": "Настройки",
+			"translationOutputMode": "Стиль экспорта перевода",
+			"translationOutputModeDesc": {
+				"line1": "Стиль AMLL встраивает перевод строк непосредственно в виде x-translation,",
+				"line2": "x-bg имеет собственное время начала и окончания.",
+				"line3": "Стиль Apple Music записывает переводы в iTunesMetadata в <head>,",
+				"line4": "но x-bg не имеет времени строки."
+			},
+			"translationOutputModeOptions": {
+				"amll": "Стиль AMLL",
+				"appleMusic": "Стиль Apple Music"
+			},
+			"defaultTtmlAuthorGithub": "GitHub ID автора TTML по умолчанию",
+			"defaultTtmlAuthorGithubDesc": "Заполняется автоматически, если ttmlAuthorGithub пуст.",
+			"defaultTtmlAuthorGithubLogin": "Имя пользователя GitHub автора TTML по умолчанию",
+			"defaultTtmlAuthorGithubLoginDesc": "Заполняется автоматически, если ttmlAuthorGithubLogin пуст."
 		},
 		"about": {
 			"update": "Обновление",
@@ -142,13 +177,33 @@
 			"display": "Отображение",
 			"timing": "Тайминг",
 			"playback": "Воспроизведение",
-			"autosave": "Автосохранение"
+			"autosave": "Автосохранение",
+			"translationOutput": "Экспорт",
+			"metadata": "Метаданные"
 		},
 		"spectrogram": {
 			"palette": "Цветовая палитра",
 			"paletteCustom": "Пользовательская",
 			"gradientEditorDesc": "Значение Pos 0.0 соответствует самой тихой части, а 1.0 — самой громкой. Рекомендуется использовать более яркие цвета для больших значений Pos.",
-			"addStop": "Добавить цветовую точку"
+			"addStop": "Добавить цветовую точку",
+			"customPaletteTitle": "Пользовательская цветовая схема спектрограммы"
+		},
+		"personalization": {
+			"appearanceGroup": "Тема и внешний вид",
+			"theme": "Тема оформления",
+			"themeDesc": "Выберите светлую, тёмную или системную тему.",
+			"themeLight": "Светлая",
+			"themeDark": "Тёмная",
+			"themeAuto": "Автоматически",
+			"accentColor": "Акцентный цвет",
+			"accentColorDesc": "Настройка основных цветов интерфейса и эффектов подсветки.",
+			"ambientGlow": "Эффект фонового свечения",
+			"ambientGlowDesc": "Отображение динамического тумана и частиц свечения на фоне.",
+			"glassStyle": "Эффект матового стекла",
+			"glassStyleDesc": "Регулировка прозрачности и радиуса размытия Гаусса для панелей и окон.",
+			"glassSolid": "Сплошной",
+			"glassStandard": "Полупрозрачный",
+			"glassHyper": "Ультрапрозрачный"
 		}
 	},
 	"topBar": {
@@ -182,7 +237,6 @@
 			"rubySegment": "Ruby Segmentation",
 			"advancedSegment": "Расширенная сегментация...",
 			"syncLineTimestamps": "Синхронизировать временные метки строк",
-			"distributeRomanization": "Распределить романизацию...",
 			"help": "Справка",
 			"helpDoc": "Документация (КНР)",
 			"importLyric": {
@@ -203,19 +257,18 @@
 				"toYRC": "Экспорт в YRC",
 				"toLrcfySylb": "Экспорт в Lyricify Syllable",
 				"toASS": "Экспорт в субтитры ASS"
+			},
+			"perWordRomanization": {
+				"index": "Пословная романизация",
+				"distribute": "Распределить романизацию...",
+				"check": "Проверить пословную романизацию",
+				"autoRuby": "Автоматический руби"
 			}
 		}
 	},
 	"header": {
 		"status": {
-			"saving": "Сохранение...",
-			"pending": "Сохранение...",
-			"savedAt": "Последнее сохранение в",
-			"saved": "Сохранено"
-		},
-		"popover": {
-			"filename": "Имя файла",
-			"versionHistory": "История версий..."
+			"autoSavedAt": "Автоматически сохранено в {time}"
 		}
 	},
 	"contextMenu": {
@@ -231,7 +284,9 @@
 		"replaceWord": "Заменить слово…",
 		"combineWords": "Объединить слова",
 		"moveFollowingWordToNewLine": "Переместить следующие в новую строку",
-		"moveWordToNewLine": "Переместить {count, plural, one {слово} few {слова} many {слов} other {слов}} в новую строку"
+		"moveWordToNewLine": "Переместить {count, plural, one {слово} few {слова} many {слов} other {слов}} в новую строку",
+		"pasteTTML": "Вставить TTML",
+		"newLine": "Новая строка"
 	},
 	"settingsDialog": {
 		"title": "Настройки",
@@ -280,31 +335,59 @@
 				"Sync": "Синхр.",
 				"Audio": "Аудио",
 				"Spectrogram": "Спектрограмма"
-			}
+			},
+			"moveFirstWordAndPlay": "settingsDialog.keybindings.moveFirstWordAndPlay",
+			"moveLastWordAndPlay": "settingsDialog.keybindings.moveLastWordAndPlay"
 		},
 		"tab": {
-			"common": "Общие",
 			"keybindings": "Горячие клавиши",
-			"spectrogram": "Спектрограмма"
+			"spectrogram": "Спектрограмма",
+			"general": "Общие",
+			"appearance": "Внешний вид",
+			"about": "О программе"
 		}
 	},
 	"error": {
 		"unsupportedFileFormat": "Неподдерживаемый формат файла: {ext}",
-		"openFileFailed": "Не удалось открыть файл"
+		"openFileFailed": "Не удалось открыть файл",
+		"ttml": {
+			"kind": {
+				"AttrError": "Ошибка атрибута XML",
+				"EntityError": "Неизвестная XML-сущность",
+				"InvalidTimestamp": "Неверный формат метки времени",
+				"MissingAttribute": "Отсутствует обязательный атрибут",
+				"UnexpectedEof": "Неожиданный конец файла",
+				"XmlError": "Синтаксическая ошибка XML",
+				"ParseError": "Общая ошибка разбора"
+			},
+			"suggestion": {
+				"AttrError": "Пожалуйста, проверьте правильность форматирования атрибутов XML.",
+				"EntityError": "Проверьте правильность использования предопределённых сущностей XML.",
+				"InvalidTimestamp": "Допустимый формат метки времени: 'hh:mm:ss.sss'; ведущие нули можно опускать. Например, '1:03:36.120'.",
+				"MissingAttribute": "Проверьте журнал выше и добавьте необходимые атрибуты.",
+				"UnexpectedEof": "Убедитесь, что все открытые теги (например, </tt> или </body>) правильно закрыты.",
+				"XmlError": "Пожалуйста, проверьте файл на наличие синтаксических ошибок XML.",
+				"ParseError": "Обратитесь к журналу выше и проверьте правильность формата файла."
+			},
+			"copied": "Скопировано в буфер обмена",
+			"copyFailed": "Не удалось скопировать",
+			"title": "Не удалось обработать TTML",
+			"subtitle": "Произошла ошибка при обработке файла TTML.",
+			"close": "Закрыть",
+			"copyError": "Скопировать журнал ошибок"
+		},
+		"pasteClipboardFailed": "Не удалось прочитать буфер обмена"
 	},
 	"audioPanel": {
 		"volume": "Громкость",
 		"playbackRate": "Скорость воспроизведения",
 		"clickToLoadMusic": "Нажмите на значок, чтобы загрузить музыку",
 		"playPause": "Воспроизвести / приостановить музыку",
-		"expandSpectrogram": "Развернуть / свернуть спектрограмму"
+		"expandSpectrogram": "Развернуть / свернуть спектрограмму",
+		"bpm": "BPM",
+		"bpmError": "Ошибка"
 	},
 	"audio": {
-		"status": {
-			"transcoding": "Ошибка декодирования, попытка перекодирования аудио...",
-			"loading": "Загрузка аудио...",
-			"processing": "Обработка..."
-		},
 		"error": {
 			"workerError": "Ошибка обработки аудио"
 		}
@@ -344,9 +427,10 @@
 		"deleteSuccess": "Удаление успешно",
 		"time": "Время",
 		"restore": "Восстановить",
-		"about": "О программе",
 		"remove": "Удалить",
-		"clickToSet": "Нажмите, чтобы установить "
+		"clickToSet": "Нажмите, чтобы установить ",
+		"copyTo": "Скопировать в",
+		"moveTo": "Переместить в"
 	},
 	"lyricLineView": {
 		"translatedLabel": "Перевод:",
@@ -476,14 +560,10 @@
 			"ttmlAuthorGithubLoginInvalidMsg": "GitHub имя пользователя должно быть буквенно-цифровым или содержать дефисы, до 39 символов"
 		},
 		"title": "Редактор метаданных",
-		"key": "Ключ",
-		"value": "Значение",
-		"empty": "Нет метаданных",
-		"addKeyValue": "Добавить новую пару ключ-значение",
 		"customKey": "Пользовательский ключ",
-		"addPresets": "Добавить все предустановленные ключи",
 		"clear": "Очистить",
-		"info": "Подробнее"
+		"info": "Подробнее",
+		"emptyItem": "В этот раздел пока не добавлено ни одной записи."
 	},
 	"submitToAMLLDB": {
 		"validation": {
@@ -577,17 +657,64 @@
 		"appName": "Инструмент TTML для текстов в стиле Apple Music",
 		"description": "Инструмент редактирования и тайминга TTML по словам для текстов в стиле Apple Music",
 		"buildDate": "Дата сборки: {date}",
-		"gitCommit": "Git-коммит: {commit}"
+		"gitCommit": "Git-коммит: {commit}",
+		"unknown": "unknown"
 	},
 	"spectrogram": {
 		"invalidEndTime": "Невозможно выбрать это время окончания",
 		"noAudioLoaded": "Пожалуйста, загрузите аудиофайл для отображения спектрограммы",
 		"loadAudio": "Загрузить аудиофайл",
-		"showUnselectedLines": "Показать невыбранные строки"
+		"showUnselectedLines": "Показать невыбранные строки",
+		"clickToCalibrateBeatN": "Нажмите для калибровки {n}-й доли",
+		"decoding": "Декодирование аудио, пожалуйста, подождите...",
+		"showBeatLines": "Показывать доли на спектрограмме"
 	},
 	"pwa": {
 		"offlineReady": "Сайт успешно кэширован для автономного использования",
 		"updateRefresh": "Сайт обновлён, обновите страницу для использования последней версии!",
 		"refresh": "Обновить"
+	},
+	"sidebar": {
+		"outline": {
+			"emptyLine": "Пусто",
+			"title": "Структура"
+		},
+		"bpm": {
+			"title": "BPM",
+			"analyzing": "Анализ",
+			"halve": "Уменьшить BPM вдвое",
+			"double": "Удвоить BPM",
+			"reset": "Сбросить BPM",
+			"followPlaybackRate": "Следовать скорости воспроизведения",
+			"showBeatLines": "Показывать доли на спектрограмме",
+			"slidingWindowTip": "Для расчета BPM используются только последние 10 точек калибровки",
+			"manualCalibration": "Ручная калибровка нажатием",
+			"spectrogramCalibration": "Калибровка по спектрограмме",
+			"tapInstructionPrefix": "Нажмите ",
+			"tapInstructionSuffix": " или кликните здесь в такт",
+			"clickOnSpectrogramToCalibrate": "Кликните по спектрограмме для калибровки"
+		}
+	},
+	"latencyTestDialog": {
+		"title": "Тест задержки сдвига времени",
+		"description": "Выберите предпочитаемый BPM и нажимайте клавишу {key} при каждом звуковом сигнале для измерения задержки звука и ввода.",
+		"latencyDisplay": {
+			"fastest": "Самая быстрая",
+			"current": {
+				"none": "Не измерено",
+				"fast": "Раньше",
+				"slow": "Позже",
+				"perfect": "Идеально"
+			},
+			"slowest": "Самая медленная"
+		},
+		"bpmInputLabel": "Темп (BPM)",
+		"button": {
+			"stop": "Стоп",
+			"start": "Старт"
+		}
+	},
+	"lyricEditor": {
+		"locate": "найти"
 	}
 }

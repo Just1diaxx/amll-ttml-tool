@@ -43,6 +43,72 @@
 		"Google Sans Code", ui-monospace, SFMono-Regular, "SF Pro Mono",
 		"JetBrains Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
 		"MiSans", monospace;
+
+	--color-panel-solid: var(--color-background);
+}
+
+/* 100x Cooler Theme & Glassmorphism System */
+[data-glass="glass"] .rt-Card,
+[data-glass="glass"] .rt-DialogContent,
+[data-glass="glass"] .rt-PopoverContent,
+[data-glass="glass"] .rt-DropdownMenuContent {
+	background-color: var(--color-panel-translucent) !important;
+	backdrop-filter: blur(20px) saturate(190%);
+	-webkit-backdrop-filter: blur(20px) saturate(190%);
+	border: 1px solid var(--gray-a4);
+	box-shadow: 0 12px 32px 0 rgba(0, 0, 0, 0.22), 0 0 0 1px var(--accent-a3);
+}
+
+[data-glass="hyper"] .rt-Card,
+[data-glass="hyper"] .rt-DialogContent,
+[data-glass="hyper"] .rt-PopoverContent,
+[data-glass="hyper"] .rt-DropdownMenuContent {
+	background: linear-gradient(
+		135deg,
+		var(--accent-a2) 0%,
+		var(--color-panel-translucent) 100%
+	) !important;
+	backdrop-filter: blur(28px) saturate(220%);
+	-webkit-backdrop-filter: blur(28px) saturate(220%);
+	border: 1px solid var(--accent-a5);
+	box-shadow: 0 16px 40px -8px var(--accent-a4), 0 0 20px 0 var(--accent-a3);
+}
+
+/* Glowing primary buttons & hover effects */
+.rt-BaseButton:where(.rt-variant-solid) {
+	box-shadow: 0 2px 10px var(--accent-a4), 0 0 0 1px var(--accent-a6);
+	transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+
+	&:hover {
+		transform: translateY(-1px);
+		box-shadow: 0 4px 16px var(--accent-a6), 0 0 12px var(--accent-a5);
+	}
+
+	&:active {
+		transform: translateY(0);
+	}
+}
+
+.rt-BaseButton:where(.rt-variant-soft) {
+	background-color: var(--accent-a3);
+	transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+
+	&:hover {
+		background-color: var(--accent-a4);
+		box-shadow: 0 0 12px var(--accent-a3);
+	}
+}
+
+.rt-BaseButton:where(.rt-variant-soft):where(:active:not([data-state="open"])) {
+	background-color: var(--accent-a5);
+}
+
+/* Sleek glowing selection rings */
+.rt-TextFieldRoot:focus-within,
+.rt-TextAreaRoot:focus-within,
+.rt-SelectTrigger:focus-visible {
+	box-shadow: 0 0 0 2px var(--accent-a8), 0 0 12px var(--accent-a4) !important;
+	transition: box-shadow 0.2s ease;
 }
 
 ::-webkit-scrollbar-track {
@@ -55,32 +121,24 @@
 
 ::-webkit-scrollbar {
 	background-color: transparent;
-	width: 20px;
+	width: 10px;
+	height: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-	border: solid 6px transparent;
+	border: solid 2px transparent;
 	box-shadow:
-		inset 0 0 0 1px rgba(128, 128, 128, 0.15),
-		inset 0 0 0 6px rgba(128, 128, 128, 0.25);
+		inset 0 0 0 1px var(--accent-a3),
+		inset 0 0 0 6px var(--gray-a4);
 	border-radius: 10px;
 	background: transparent;
+	transition: all 0.25s ease;
 
 	&:hover {
-		background: transparent;
+		box-shadow:
+			inset 0 0 0 1px var(--accent-a7),
+			inset 0 0 0 6px var(--accent-a5);
 	}
-}
-
-.rt-BaseButton:where(.rt-variant-soft) {
-	background-color: var(--accent-a3);
-
-	&:hover {
-		background-color: var(--accent-a4);
-	}
-}
-
-.rt-BaseButton:where(.rt-variant-soft):where(:active:not([data-state="open"])) {
-	background-color: var(--accent-a5);
 }
 
 .amll-lyric-player {
@@ -92,3 +150,20 @@
 	/* 避免 Radix UI 锁定焦点时把 Toast 也加上 pointer-events: none; 吞掉鼠标事件 */
 	pointer-events: auto;
 }
+
+/* Subtle glass tab & card hover animation */
+.rt-SegmentedControlRoot {
+	backdrop-filter: blur(12px);
+	border: 1px solid var(--gray-a4);
+	box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes pulseGlow {
+	0%, 100% {
+		box-shadow: 0 0 8px var(--accent-a4);
+	}
+	50% {
+		box-shadow: 0 0 20px var(--accent-a6);
+	}
+}
+

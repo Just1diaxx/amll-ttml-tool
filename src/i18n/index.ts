@@ -27,14 +27,14 @@ i18n
 	.init({
 		resources,
 		debug: import.meta.env.DEV,
-		fallbackLng: "zh-CN",
+		fallbackLng: "en-US",
 		interpolation: {
 			escapeValue: false, // react already safes from xss
 		},
 		returnNull: false,
 	})
 	.then(() =>
-		i18n.changeLanguage(localStorage.getItem("language") || navigator.language),
+		i18n.changeLanguage(localStorage.getItem("language") || "en-US"),
 	);
 
 export default i18n;

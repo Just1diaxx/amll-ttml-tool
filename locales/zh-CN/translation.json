@@ -115,7 +115,7 @@
 			},
 			"translationOutputMode": "翻译输出方式",
 			"translationOutputModeDesc": {
-				"line1": "AMLL 样式将逐行翻译以 x-translation 内嵌在歌词行中",
+				"line1": "AMLL 样式将逐行翻译以 x-translation 内嵌在歌词行中，",
 				"line2": "x-bg 有行起始时间与结束时间。",
 				"line3": "Apple Music 样式将翻译写入 <head> 的 iTunesMetadata 中，",
 				"line4": "但无 x-bg 行时间。"
@@ -193,7 +193,17 @@
 			"themeDesc": "选择界面使用浅色、深色，或跟随系统设置。",
 			"themeLight": "浅色",
 			"themeDark": "深色",
-			"themeAuto": "自动"
+			"themeAuto": "自动",
+			"appearanceGroup": "主题与外观",
+			"accentColor": "强调色",
+			"accentColorDesc": "自定义软件界面的主题色调与高亮光效。",
+			"ambientGlow": "环境氛围光效",
+			"ambientGlowDesc": "在背景渲染流动的动态光雾与粒子流光效果。",
+			"glassStyle": "毛玻璃磨砂效果",
+			"glassStyleDesc": "调节界面面板与对话框的透明度及高斯模糊强度。",
+			"glassSolid": "纯色实心",
+			"glassStandard": "标准透光",
+			"glassHyper": "极炫高透"
 		}
 	},
 	"topBar": {

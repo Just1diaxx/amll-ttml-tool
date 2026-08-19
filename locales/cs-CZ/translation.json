@@ -35,6 +35,10 @@
 		"importFile": {
 			"title": "Potvrdit import titulek",
 			"description": "Máte neuložené změny. Pokud budete pokračovat, tyto změny budou ztraceny. Opravdu chcete importovat nové titulky?"
+		},
+		"useMetadataName": {
+			"title": "Použít název z mezdát?",
+			"description": "Použít „{name}“ jako název souboru?"
 		}
 	},
 	"ribbonBar": {
@@ -62,7 +66,11 @@
 			"translatedLyric": "Překlad",
 			"romanLyric": "Romanizace",
 			"layoutMode": "Rozložení",
-			"auxiliaryLineDisplay": "Zobrazení pomocného řádku"
+			"auxiliaryLineDisplay": "Zobrazení pomocného řádku",
+			"duration": "Doba trvání",
+			"views": "Zobrazení",
+			"showOutline": "Osnova",
+			"showBpmPanel": "BPM"
 		},
 		"previewMode": {
 			"lyrics": "titulky",
@@ -87,7 +95,8 @@
 			"keyBindingReference": "Přehled klávesových zkratek",
 			"startSync": "Označit začátek",
 			"continuousSync": "Potvrdit",
-			"endSync": "Označit konec"
+			"endSync": "Označit konec",
+			"bgLyricIgnoreSync": "Ignorovat vokály na pozadí"
 		},
 		"loading": "Načítání panelu…"
 	},
@@ -128,7 +137,33 @@
 				"enable": "Povolit automatické ukládání",
 				"interval": "Interval ukládání (minuty)",
 				"limit": "Počet snímků k uchování"
-			}
+			},
+			"customBackground": "Vlastní pozadí",
+			"customBackgroundDesc": "Vyberte obrázek jako pozadí.",
+			"customBackgroundPick": "Vybrat obrázek",
+			"customBackgroundClear": "Vyčistit",
+			"customBackgroundOpacity": "Krytí",
+			"customBackgroundOpacityWarning": "Pokud je tato hodnota příliš vysoká, text může být špatně čitelný.",
+			"customBackgroundMask": "Maska",
+			"customBackgroundBlur": "Poloměr rozostření",
+			"customBackgroundBrightness": "Jas",
+			"customBackgroundEnabled": "Pozadí nastaveno",
+			"customBackgroundManage": "Nastavení",
+			"translationOutputMode": "Styl výstupu překladu",
+			"translationOutputModeDesc": {
+				"line1": "Styl AMLL vkládá překlad řádku jako x-translation,",
+				"line2": "x-bg má své vlastní počáteční a koncové časy.",
+				"line3": "Styl Apple Music zapisuje překlady do iTunesMetadata v <head>,",
+				"line4": "ale x-bg nemá časování řádku."
+			},
+			"translationOutputModeOptions": {
+				"amll": "Styl AMLL",
+				"appleMusic": "Styl Apple Music"
+			},
+			"defaultTtmlAuthorGithub": "Výchozí GitHub ID autora TTML",
+			"defaultTtmlAuthorGithubDesc": "Automaticky vyplněno, pokud je ttmlAuthorGithub prázdný.",
+			"defaultTtmlAuthorGithubLogin": "Výchozí uživatelské jméno autora TTML na GitHubu",
+			"defaultTtmlAuthorGithubLoginDesc": "Automaticky vyplněno, pokud je ttmlAuthorGithubLogin prázdný."
 		},
 		"about": {
 			"update": "Aktualizace",
@@ -142,13 +177,33 @@
 			"display": "Zobrazení",
 			"timing": "Časování",
 			"playback": "Přehrávání",
-			"autosave": "Automatické ukládání"
+			"autosave": "Automatické ukládání",
+			"translationOutput": "Export",
+			"metadata": "Metadata"
 		},
 		"spectrogram": {
 			"palette": "Barevná paleta",
 			"paletteCustom": "Vlastní",
 			"gradientEditorDesc": "Hodnota Pos 0.0 odpovídá nejtišší části a 1.0 nejhlasitější části. Doporučuje se používat jasnější barvy pro větší hodnoty Pos.",
-			"addStop": "Přidat barevný bod"
+			"addStop": "Přidat barevný bod",
+			"customPaletteTitle": "Vlastní barevné schéma spektrogramu"
+		},
+		"personalization": {
+			"appearanceGroup": "Motiv a vzhled",
+			"theme": "Motiv vzhledu",
+			"themeDesc": "Vyberte světlý, tmavý nebo podle nastavení systému.",
+			"themeLight": "Světlý",
+			"themeDark": "Tmavý",
+			"themeAuto": "Automaticky",
+			"accentColor": "Barva zvýraznění",
+			"accentColorDesc": "Přizpůsobit barvy rozhraní a efekty zvýraznění.",
+			"ambientGlow": "Efekt okolního světla",
+			"ambientGlowDesc": "Vykreslovat dynamickou mlhu a částicové efekty na pozadí.",
+			"glassStyle": "Efekt matného skla",
+			"glassStyleDesc": "Upravit průhlednost a intenzitu Gaussova rozostření pro panely a dialogy.",
+			"glassSolid": "Plný",
+			"glassStandard": "Průsvitný",
+			"glassHyper": "Extra čirý"
 		}
 	},
 	"topBar": {
@@ -182,7 +237,6 @@
 			"rubySegment": "Ruby Segmentation",
 			"advancedSegment": "Pokročilá segmentace...",
 			"syncLineTimestamps": "Synchronizovat časové značky řádků",
-			"distributeRomanization": "Distribuovat romanizaci...",
 			"help": "Nápověda",
 			"helpDoc": "Dokumentace (ČLR)",
 			"importLyric": {
@@ -203,19 +257,18 @@
 				"toYRC": "Exportovat do YRC",
 				"toLrcfySylb": "Exportovat do Lyricify Syllable",
 				"toASS": "Exportovat do titulků ASS"
+			},
+			"perWordRomanization": {
+				"index": "Přepis po jednotlivých slovech",
+				"distribute": "Rozdělit přepis...",
+				"check": "Zkontrolovat přepis slov",
+				"autoRuby": "Automatický Ruby přepis"
 			}
 		}
 	},
 	"header": {
 		"status": {
-			"saving": "Ukládání...",
-			"pending": "Ukládání...",
-			"savedAt": "Naposledy uloženo v",
-			"saved": "Uloženo"
-		},
-		"popover": {
-			"filename": "Název souboru",
-			"versionHistory": "Historie verzí..."
+			"autoSavedAt": "Automaticky uloženo v {time}"
 		}
 	},
 	"contextMenu": {
@@ -231,7 +284,9 @@
 		"replaceWord": "Nahradit slovo…",
 		"combineWords": "Sloučit slova",
 		"moveFollowingWordToNewLine": "Přesunout následující na nový řádek",
-		"moveWordToNewLine": "Přesunout {count, plural, one {slovo} few {slova} other {slov}} na nový řádek"
+		"moveWordToNewLine": "Přesunout {count, plural, one {slovo} few {slova} other {slov}} na nový řádek",
+		"pasteTTML": "Vložit TTML",
+		"newLine": "Nový řádek"
 	},
 	"settingsDialog": {
 		"title": "Předvolby",
@@ -280,31 +335,59 @@
 				"Sync": "Synchronizace",
 				"Audio": "Zvuk",
 				"Spectrogram": "Spektrogram"
-			}
+			},
+			"moveFirstWordAndPlay": "settingsDialog.keybindings.moveFirstWordAndPlay",
+			"moveLastWordAndPlay": "settingsDialog.keybindings.moveLastWordAndPlay"
 		},
 		"tab": {
-			"common": "Obecné",
 			"keybindings": "Klávesové zkratky",
-			"spectrogram": "Spektrogram"
+			"spectrogram": "Spektrogram",
+			"general": "Obecné",
+			"appearance": "Vzhled",
+			"about": "O aplikaci"
 		}
 	},
 	"error": {
 		"unsupportedFileFormat": "Nepodporovaný formát souboru: {ext}",
-		"openFileFailed": "Nepodařilo se otevřít soubor"
+		"openFileFailed": "Nepodařilo se otevřít soubor",
+		"ttml": {
+			"kind": {
+				"AttrError": "Chyba atributu XML",
+				"EntityError": "Neznámá XML entita",
+				"InvalidTimestamp": "Neplatný formát časového razítka",
+				"MissingAttribute": "Chybí požadovaný atribut",
+				"UnexpectedEof": "Neočekávaný konec souboru",
+				"XmlError": "Chyba syntaxe XML",
+				"ParseError": "Obecná chyba zpracování"
+			},
+			"suggestion": {
+				"AttrError": "Zkontrolujte, zda jsou atributy XML správně naformátovány.",
+				"EntityError": "Zkontrolujte, zda jsou použité předdefinované XML entity platné.",
+				"InvalidTimestamp": "Povolený formát časového razítka je 'hh:mm:ss.sss'; úvodní nuly lze vynechat. Například '1:03:36.120'.",
+				"MissingAttribute": "Zkontrolujte protokol výše a přidejte požadované atributy.",
+				"UnexpectedEof": "Ujistěte se, že všechny otevřené značky (např. </tt> nebo </body>) jsou správně uzavřeny.",
+				"XmlError": "Zkontrolujte soubor na chyby syntaxe XML.",
+				"ParseError": "Podívejte se na protokol výše a zkontrolujte správnost formátu souboru."
+			},
+			"copied": "Zkopírováno do schránky",
+			"copyFailed": "Kopírování selhalo",
+			"title": "Chyba při zpracování TTML",
+			"subtitle": "Při zpracování souboru TTML došlo k chybě.",
+			"close": "Zavřít",
+			"copyError": "Kopírovat chybový protokol"
+		},
+		"pasteClipboardFailed": "Nepodařilo se načíst schránku"
 	},
 	"audioPanel": {
 		"volume": "Hlasitost",
 		"playbackRate": "Rychlost přehrávání",
 		"clickToLoadMusic": "Klikněte na ikonu pro načtení hudby",
 		"playPause": "Přehrát / pozastavit hudbu",
-		"expandSpectrogram": "Rozbalit / sbalit spektrogram"
+		"expandSpectrogram": "Rozbalit / sbalit spektrogram",
+		"bpm": "BPM",
+		"bpmError": "Chyba"
 	},
 	"audio": {
-		"status": {
-			"transcoding": "Dekódování selhalo, pokus o překódování zvuku...",
-			"loading": "Načítání zvuku...",
-			"processing": "Zpracování..."
-		},
 		"error": {
 			"workerError": "Chyba při zpracování zvuku"
 		}
@@ -344,9 +427,10 @@
 		"deleteSuccess": "Smazání úspěšné",
 		"time": "Čas",
 		"restore": "Obnovit",
-		"about": "O aplikaci",
 		"remove": "Odstranit",
-		"clickToSet": "Klikněte pro nastavení "
+		"clickToSet": "Klikněte pro nastavení ",
+		"copyTo": "Kopírovat do",
+		"moveTo": "Přesunout do"
 	},
 	"lyricLineView": {
 		"translatedLabel": "Překlad:",
@@ -476,14 +560,10 @@
 			"ttmlAuthorGithubLoginInvalidMsg": "GitHub uživatelské jméno musí být alfanumerické nebo obsahovat pomlčky, max. 39 znaků"
 		},
 		"title": "Editor metadat",
-		"key": "Klíč",
-		"value": "Hodnota",
-		"empty": "Žádná metadata",
-		"addKeyValue": "Přidat nový pár klíč-hodnota",
 		"customKey": "Vlastní klíč",
-		"addPresets": "Přidat všechny předdefinované klíče",
 		"clear": "Vymazat",
-		"info": "Více informací"
+		"info": "Více informací",
+		"emptyItem": "V této sekci zatím nejsou žádné položky."
 	},
 	"submitToAMLLDB": {
 		"validation": {
@@ -577,17 +657,64 @@
 		"appName": "Nástroj TTML pro titulky ve stylu Apple Music",
 		"description": "Nástroj pro úpravu a časování TTML po slovech pro titulky ve stylu Apple Music",
 		"buildDate": "Datum sestavení: {date}",
-		"gitCommit": "Git commit: {commit}"
+		"gitCommit": "Git commit: {commit}",
+		"unknown": "unknown"
 	},
 	"spectrogram": {
 		"invalidEndTime": "Nelze vybrat tento čas konce",
 		"noAudioLoaded": "Prosím načtěte zvukový soubor pro vykreslení spektrogramu",
 		"loadAudio": "Načíst zvukový soubor",
-		"showUnselectedLines": "Zobrazit nevybrané řádky"
+		"showUnselectedLines": "Zobrazit nevybrané řádky",
+		"clickToCalibrateBeatN": "Klikněte pro kalibraci {n}. doby",
+		"decoding": "Dekódování zvuku, čekejte prosím...",
+		"showBeatLines": "Zobrazit doby na spektrogramu"
 	},
 	"pwa": {
 		"offlineReady": "Stránka úspěšně uložena do mezipaměti pro offline použití",
 		"updateRefresh": "Stránka aktualizována, obnovte pro použití nejnovější verze!",
 		"refresh": "Obnovit"
+	},
+	"sidebar": {
+		"outline": {
+			"emptyLine": "Prázdné",
+			"title": "Osnova"
+		},
+		"bpm": {
+			"title": "BPM",
+			"analyzing": "Analýza",
+			"halve": "Poloviční BPM",
+			"double": "Dvojnásobné BPM",
+			"reset": "Resetovat BPM",
+			"followPlaybackRate": "Sledovat rychlost přehrávání",
+			"showBeatLines": "Zobrazit doby na spektrogramu",
+			"slidingWindowTip": "K výpočtu BPM se používá pouze posledních 10 kalibračních bodů",
+			"manualCalibration": "Ruční kalibrace vyklepáním",
+			"spectrogramCalibration": "Kalibrovat pomocí spektrogramu",
+			"tapInstructionPrefix": "Stiskněte ",
+			"tapInstructionSuffix": " nebo klikněte sem podle rytmu",
+			"clickOnSpectrogramToCalibrate": "Klikněte na spektrogram pro kalibraci"
+		}
+	},
+	"latencyTestDialog": {
+		"title": "Test latence časového posunu",
+		"description": "Zvolte preferované BPM a stiskněte klávesu {key} při každém pípnutí pro změření latence zvuku a vstupu.",
+		"latencyDisplay": {
+			"fastest": "Nejrychlejší",
+			"current": {
+				"none": "Neměřeno",
+				"fast": "Příliš brzy",
+				"slow": "Příliš pozdě",
+				"perfect": "Perfektní"
+			},
+			"slowest": "Nejpomalejší"
+		},
+		"bpmInputLabel": "Tempo (BPM)",
+		"button": {
+			"stop": "Zastavit",
+			"start": "Spustit"
+		}
+	},
+	"lyricEditor": {
+		"locate": "vyhledat"
 	}
 }

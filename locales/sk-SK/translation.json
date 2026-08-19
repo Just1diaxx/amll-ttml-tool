@@ -35,6 +35,10 @@
 		"importFile": {
 			"title": "Potvrdiť import textov",
 			"description": "Máte neuložené zmeny. Ak budete pokračovať, tieto zmeny budú stratené. Naozaj chcete importovať nové texty?"
+		},
+		"useMetadataName": {
+			"title": "Použiť názov z metadát?",
+			"description": "Použiť „{name}“ ako názov súboru?"
 		}
 	},
 	"ribbonBar": {
@@ -62,7 +66,11 @@
 			"translatedLyric": "Preklad",
 			"romanLyric": "Romanizácia",
 			"layoutMode": "Rozloženie",
-			"auxiliaryLineDisplay": "Zobrazenie pomocného riadku"
+			"auxiliaryLineDisplay": "Zobrazenie pomocného riadku",
+			"duration": "Doba trvania",
+			"views": "Zobrazenia",
+			"showOutline": "Osnova",
+			"showBpmPanel": "BPM"
 		},
 		"previewMode": {
 			"lyrics": "Texty",
@@ -87,7 +95,8 @@
 			"keyBindingReference": "Prehľad klávesových skratiek",
 			"startSync": "Označiť začiatok",
 			"continuousSync": "Potvrdiť",
-			"endSync": "Označiť koniec"
+			"endSync": "Označiť koniec",
+			"bgLyricIgnoreSync": "Ignorovať vokály na pozadí"
 		},
 		"loading": "Načítavanie panelu…"
 	},
@@ -128,7 +137,33 @@
 				"enable": "Povoliť automatické ukladanie",
 				"interval": "Interval ukladania (minúty)",
 				"limit": "Počet snímok na uchovanie"
-			}
+			},
+			"customBackground": "Vlastné pozadie",
+			"customBackgroundDesc": "Vyberte obrázok ako pozadie.",
+			"customBackgroundPick": "Vybrať obrázok",
+			"customBackgroundClear": "Vyčistiť",
+			"customBackgroundOpacity": "Priehľadnosť",
+			"customBackgroundOpacityWarning": "Ak je táto hodnota príliš vysoká, obsah stránky môže byť ťažko čitateľný.",
+			"customBackgroundMask": "Maska",
+			"customBackgroundBlur": "Polomer rozostrenia",
+			"customBackgroundBrightness": "Jas",
+			"customBackgroundEnabled": "Pozadie nastavené",
+			"customBackgroundManage": "Nastavenia",
+			"translationOutputMode": "Štýl exportu prekladu",
+			"translationOutputModeDesc": {
+				"line1": "Štýl AMLL vkladá preklady riadkov priamo ako x-translation,",
+				"line2": "x-bg má svoje vlastné začiatočné a koncové časy.",
+				"line3": "Štýl Apple Music zapisuje preklady do iTunesMetadata v <head>,",
+				"line4": "ale x-bg nemá časovanie riadku."
+			},
+			"translationOutputModeOptions": {
+				"amll": "Štýl AMLL",
+				"appleMusic": "Štýl Apple Music"
+			},
+			"defaultTtmlAuthorGithub": "Predvolené GitHub ID autora TTML",
+			"defaultTtmlAuthorGithubDesc": "Automaticky vyplnené, ak je ttmlAuthorGithub prázdny.",
+			"defaultTtmlAuthorGithubLogin": "Predvolené používateľské meno autora TTML na GitHube",
+			"defaultTtmlAuthorGithubLoginDesc": "Automaticky vyplnené, ak je ttmlAuthorGithubLogin prázdny."
 		},
 		"about": {
 			"update": "Aktualizácia",
@@ -142,13 +177,33 @@
 			"display": "Zobrazenie",
 			"timing": "Časovanie",
 			"playback": "Prehrávanie",
-			"autosave": "Automatické ukladanie"
+			"autosave": "Automatické ukladanie",
+			"translationOutput": "Export",
+			"metadata": "Metadata"
 		},
 		"spectrogram": {
 			"palette": "Farebná paleta",
 			"paletteCustom": "Vlastná",
 			"gradientEditorDesc": "Hodnota Pos 0.0 zodpovedá najtichšej časti a 1.0 najhlasnejšej časti. Odporúča sa používať jasnejšie farby pre väčšie hodnoty Pos.",
-			"addStop": "Pridať farebný bod"
+			"addStop": "Pridať farebný bod",
+			"customPaletteTitle": "Vlastná farebná schéma spektrogramu"
+		},
+		"personalization": {
+			"appearanceGroup": "Motív a vzhľad",
+			"theme": "Motív vzhľadu",
+			"themeDesc": "Vyberte svetlý, tmavý alebo podľa nastavení systému.",
+			"themeLight": "Svetlý",
+			"themeDark": "Tmavý",
+			"themeAuto": "Automaticky",
+			"accentColor": "Farba zvýraznenia",
+			"accentColorDesc": "Prispôsobiť farby rozhrania a efekty zvýraznenia.",
+			"ambientGlow": "Efekt okolitého svetla",
+			"ambientGlowDesc": "Vykresľovať dynamickú hmlu a časticové efekty na pozadí.",
+			"glassStyle": "Efekt matného skla",
+			"glassStyleDesc": "Upraviť priehľadnosť a intenzitu Gaussovho rozostrenia pre panely a dialógy.",
+			"glassSolid": "Plný",
+			"glassStandard": "Priehľadný",
+			"glassHyper": "Extra číry"
 		}
 	},
 	"topBar": {
@@ -182,7 +237,6 @@
 			"rubySegment": "Ruby Segmentation",
 			"advancedSegment": "Pokročilá segmentácia...",
 			"syncLineTimestamps": "Synchronizovať časové značky riadkov",
-			"distributeRomanization": "Distribuovať romanizáciu...",
 			"help": "Pomoc",
 			"helpDoc": "Dokumentácia (ČĽR)",
 			"importLyric": {
@@ -203,19 +257,18 @@
 				"toYRC": "Exportovať do YRC",
 				"toLrcfySylb": "Exportovať do Lyricify Syllable",
 				"toASS": "Exportovať do titulkov ASS"
+			},
+			"perWordRomanization": {
+				"index": "Prepis po jednotlivých slovách",
+				"distribute": "Rozdeliť prepis...",
+				"check": "Skontrolovať prepis slov",
+				"autoRuby": "Automatický Ruby prepis"
 			}
 		}
 	},
 	"header": {
 		"status": {
-			"saving": "Ukladanie...",
-			"pending": "Ukladanie...",
-			"savedAt": "Naposledy uložené o",
-			"saved": "Uložené"
-		},
-		"popover": {
-			"filename": "Názov súboru",
-			"versionHistory": "História verzií..."
+			"autoSavedAt": "Automaticky uložené o {time}"
 		}
 	},
 	"contextMenu": {
@@ -231,7 +284,9 @@
 		"replaceWord": "Nahradiť slovo…",
 		"combineWords": "Zlúčiť slová",
 		"moveFollowingWordToNewLine": "Presunúť nasledujúce na nový riadok",
-		"moveWordToNewLine": "Presunúť {count, plural, one {slovo} few {slová} other {slov}} na nový riadok"
+		"moveWordToNewLine": "Presunúť {count, plural, one {slovo} few {slová} other {slov}} na nový riadok",
+		"pasteTTML": "Vložiť TTML",
+		"newLine": "Nový riadok"
 	},
 	"settingsDialog": {
 		"title": "Predvoľby",
@@ -280,31 +335,59 @@
 				"Sync": "Synchronizácia",
 				"Audio": "Zvuk",
 				"Spectrogram": "Spektrogram"
-			}
+			},
+			"moveFirstWordAndPlay": "settingsDialog.keybindings.moveFirstWordAndPlay",
+			"moveLastWordAndPlay": "settingsDialog.keybindings.moveLastWordAndPlay"
 		},
 		"tab": {
-			"common": "Všeobecné",
 			"keybindings": "Klávesové skratky",
-			"spectrogram": "Spektrogram"
+			"spectrogram": "Spektrogram",
+			"general": "Všeobecné",
+			"appearance": "Vzhľad",
+			"about": "O aplikácii"
 		}
 	},
 	"error": {
 		"unsupportedFileFormat": "Nepodporovaný formát súboru: {ext}",
-		"openFileFailed": "Nepodarilo sa otvoriť súbor"
+		"openFileFailed": "Nepodarilo sa otvoriť súbor",
+		"ttml": {
+			"kind": {
+				"AttrError": "Chyba atribútu XML",
+				"EntityError": "Neznáma XML entita",
+				"InvalidTimestamp": "Neplatný formát časovej pečiatky",
+				"MissingAttribute": "Chýba požadovaný atribút",
+				"UnexpectedEof": "Neočakávaný koniec súboru",
+				"XmlError": "Chyba syntaxe XML",
+				"ParseError": "Všeobecná chyba spracovania"
+			},
+			"suggestion": {
+				"AttrError": "Skontrolujte, či sú atribúty XML správne naformátované.",
+				"EntityError": "Skontrolujte, či sú použité preddefinované XML entity platné.",
+				"InvalidTimestamp": "Povolený formát časovej pečiatky je 'hh:mm:ss.sss'; úvodné nuly je možné vynechať. Napríklad '1:03:36.120'.",
+				"MissingAttribute": "Skontrolujte protokol vyššie a pridajte požadované atribúty.",
+				"UnexpectedEof": "Uistite sa, že všetky otvorené značky (napr. </tt> alebo </body>) sú správne zatvorené.",
+				"XmlError": "Skontrolujte súbor na chyby syntaxe XML.",
+				"ParseError": "Pozrite si protokol vyššie a skontrolujte správnosť formátu súboru."
+			},
+			"copied": "Skopírované do schránky",
+			"copyFailed": "Kopírovanie zlyhalo",
+			"title": "Chyba pri spracovaní TTML",
+			"subtitle": "Pri spracovaní súboru TTML došlo k chybe.",
+			"close": "Zatvoriť",
+			"copyError": "Skopírovať chybový protokol"
+		},
+		"pasteClipboardFailed": "Nepadalo sa načítať schránku"
 	},
 	"audioPanel": {
 		"volume": "Hlasitosť",
 		"playbackRate": "Rýchlosť prehrávania",
 		"clickToLoadMusic": "Kliknite na ikonu pre načítanie hudby",
 		"playPause": "Prehrať / pozastaviť hudbu",
-		"expandSpectrogram": "Rozbaliť / zbaliť spektrogram"
+		"expandSpectrogram": "Rozbaliť / zbaliť spektrogram",
+		"bpm": "BPM",
+		"bpmError": "Chyba"
 	},
 	"audio": {
-		"status": {
-			"transcoding": "Dekódovanie zlyhalo, pokus o prekódovanie zvuku...",
-			"loading": "Načítavanie zvuku...",
-			"processing": "Spracovanie..."
-		},
 		"error": {
 			"workerError": "Chyba pri spracovaní zvuku"
 		}
@@ -344,9 +427,10 @@
 		"deleteSuccess": "Zmazanie úspešné",
 		"time": "Čas",
 		"restore": "Obnoviť",
-		"about": "O aplikácii",
 		"remove": "Odstrániť",
-		"clickToSet": "Kliknite pre nastavenie "
+		"clickToSet": "Kliknite pre nastavenie ",
+		"copyTo": "Skopírovať do",
+		"moveTo": "Presunúť do"
 	},
 	"lyricLineView": {
 		"translatedLabel": "Preklad:",
@@ -476,14 +560,10 @@
 			"ttmlAuthorGithubLoginInvalidMsg": "GitHub používateľské meno musí byť alfanumerické alebo obsahovať pomlčky, max. 39 znakov"
 		},
 		"title": "Editor metadát",
-		"key": "Kľúč",
-		"value": "Hodnota",
-		"empty": "Žiadne metadáta",
-		"addKeyValue": "Pridať nový pár kľúč-hodnota",
 		"customKey": "Vlastný kľúč",
-		"addPresets": "Pridať všetky preddefinované kľúče",
 		"clear": "Vymazať",
-		"info": "Viac informácií"
+		"info": "Viac informácií",
+		"emptyItem": "V tejto sekcii zatiaľ nie sú žiadne položky."
 	},
 	"submitToAMLLDB": {
 		"validation": {
@@ -577,17 +657,64 @@
 		"appName": "Nástroj TTML pre texty v štýle Apple Music",
 		"description": "Nástroj pre úpravu a časovanie TTML po slovách pre texty v štýle Apple Music",
 		"buildDate": "Dátum zostavenia: {date}",
-		"gitCommit": "Git commit: {commit}"
+		"gitCommit": "Git commit: {commit}",
+		"unknown": "unknown"
 	},
 	"spectrogram": {
 		"invalidEndTime": "Nemožno vybrať tento čas konca",
 		"noAudioLoaded": "Prosím načítajte zvukový súbor pre vykreslenie spektrogramu",
 		"loadAudio": "Načítať zvukový súbor",
-		"showUnselectedLines": "Zobraziť nevybrané riadky"
+		"showUnselectedLines": "Zobraziť nevybrané riadky",
+		"clickToCalibrateBeatN": "Kliknite pre kalibráciu {n}. doby",
+		"decoding": "Dekódovanie zvuku, čakajte prosím...",
+		"showBeatLines": "Zobraziť doby na spektrograme"
 	},
 	"pwa": {
 		"offlineReady": "Stránka úspešne uložená do vyrovnávacej pamäte pre offline použitie",
 		"updateRefresh": "Stránka aktualizovaná, obnovte pre použitie najnovšej verzie!",
 		"refresh": "Obnoviť"
+	},
+	"sidebar": {
+		"outline": {
+			"emptyLine": "Prázdne",
+			"title": "Osnova"
+		},
+		"bpm": {
+			"title": "BPM",
+			"analyzing": "Analýza",
+			"halve": "Polovičné BPM",
+			"double": "Dvojnásobné BPM",
+			"reset": "Resetovať BPM",
+			"followPlaybackRate": "Sledovať rýchlosť prehrávania",
+			"showBeatLines": "Zobraziť doby na spektrograme",
+			"slidingWindowTip": "Na výpočet BPM sa používa iba posledných 10 kalibračných bodov",
+			"manualCalibration": "Ručná kalibrácia vyklepávaním",
+			"spectrogramCalibration": "Kalibrovať pomocou spektrogramu",
+			"tapInstructionPrefix": "Stlačte ",
+			"tapInstructionSuffix": " alebo kliknite sem podľa rytmu",
+			"clickOnSpectrogramToCalibrate": "Kliknite na spektrogram pre kalibráciu"
+		}
+	},
+	"latencyTestDialog": {
+		"title": "Test latencie časového posunu",
+		"description": "Zvoľte preferované BPM a stlačte kláves {key} pri každom pípnutí na zmeranie latencie zvuku a vstupu.",
+		"latencyDisplay": {
+			"fastest": "Najrýchlejšia",
+			"current": {
+				"none": "Nemerané",
+				"fast": "Príliš skoro",
+				"slow": "Príliš neskoro",
+				"perfect": "Perfektné"
+			},
+			"slowest": "Najpomalšia"
+		},
+		"bpmInputLabel": "Tempo (BPM)",
+		"button": {
+			"stop": "Zastaviť",
+			"start": "Spustiť"
+		}
+	},
+	"lyricEditor": {
+		"locate": "vyhľadať"
 	}
 }

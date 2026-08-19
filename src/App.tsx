@@ -69,6 +69,8 @@ import {
 	ToolMode,
 	toolModeAtom,
 } from "./states/main.ts";
+import { accentColorAtom, glassEffectAtom } from "./states/theme.ts";
+import AmbientBackground from "./components/AmbientBackground/index.tsx";
 import { useAppUpdate } from "./utils/useAppUpdate.ts";
 
 const LyricLinesView = lazy(() => import("./modules/lyric-editor/components"));
@@ -145,6 +147,8 @@ const AppErrorPage = ({
 
 function App() {
 	const isDarkTheme = useAtomValue(isDarkThemeAtom);
+	const accentColor = useAtomValue(accentColorAtom);
+	const glassEffect = useAtomValue(glassEffectAtom);
 	const toolMode = useAtomValue(toolModeAtom);
 	const showTouchSyncPanel = useAtomValue(showTouchSyncPanelAtom);
 	const customBackgroundImage = useAtomValue(customBackgroundImageAtom);
@@ -309,10 +313,11 @@ function App() {
 	return (
 		<Theme
 			appearance={effectiveTheme}
-			panelBackground="solid"
+			panelBackground={glassEffect === "solid" ? "solid" : "translucent"}
 			hasBackground={hasBackground}
-			accentColor={effectiveTheme === "dark" ? "jade" : "green"}
+			accentColor={accentColor}
 			className={styles.radixTheme}
+			data-glass={glassEffect}
 		>
 			<ErrorBoundary
 				FallbackComponent={AppErrorPage}
@@ -320,6 +325,7 @@ function App() {
 					// TODO
 				}}
 			>
+				<AmbientBackground />
 				{customBackgroundImage && (
 					<div className={styles.customBackgroundLayer} aria-hidden="true">
 						<div
