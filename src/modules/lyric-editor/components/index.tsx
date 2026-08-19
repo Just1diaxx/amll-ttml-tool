@@ -72,11 +72,20 @@ export const LyricLinesView: FC = forwardRef<HTMLDivElement>((_props, ref) => {
 	const editLyric = useAtomValue(lyricLinesOnlyAtom);
 	const lyricLines = useAtomValue(lyricLinesAtom).lyricLines;
 	const editLyricLines = useSetImmerAtom(lyricLinesAtom);
-	const viewRef = useRef<ViewportListRef>(null);
-	const viewElRef = useRef<HTMLDivElement>(null);
+	const setSelectedLines = useSetAtom(selectedLinesAtom);
 	const toolMode = useAtomValue(toolModeAtom);
+	const locateAction = useAtomValue(locateActionAtom);
+	const jumpAction = useAtomValue(outlineJumpActionAtom);
+
 	const { t } = useTranslation();
 	const { openFile } = useFileOpener();
+
+	const viewRef = useRef<ViewportListRef>(null);
+	const viewElRef = useRef<HTMLDivElement>(null);
+	const lyricLinesRef = useRef(lyricLines);
+	lyricLinesRef.current = lyricLines;
+	const lastHandledLocateRef = useRef(locateAction);
+	const lastHandledJumpRef = useRef<number | null>(null);
 
 	const handlePasteTTML = useCallback(async () => {
 		try {
@@ -131,39 +140,40 @@ export const LyricLinesView: FC = forwardRef<HTMLDivElement>((_props, ref) => {
 		});
 	}, []);
 
+	const handleLocate = useCallback(() => {
+		const lines = lyricLinesRef.current;
+		const currentTime = audioEngine.musicCurrentTime * 1000;
+		const index = findCurrentLineIndex(lines, currentTime);
+		if (index === -1) return;
+		scrollToLineIndex(index);
+		const targetLine = lines[index];
+		if (targetLine) {
+			setSelectedLines(new Set([targetLine.id]));
+		}
+	}, [scrollToLineIndex, setSelectedLines]);
+
 	useEffect(() => {
 		if (scrollToIndex === undefined) return;
 		scrollToLineIndex(scrollToIndex);
 	}, [scrollToIndex, scrollToLineIndex]);
 
-	const setSelectedLines = useSetAtom(selectedLinesAtom);
-
-	const handleLocate = useCallback(() => {
-		const currentTime = audioEngine.musicCurrentTime * 1000;
-		const index = findCurrentLineIndex(lyricLines, currentTime);
-		if (index === -1) return;
-		scrollToLineIndex(index);
-		const targetLine = lyricLines[index];
-		if (targetLine) {
-			setSelectedLines(new Set([targetLine.id]));
-		}
-	}, [lyricLines, scrollToLineIndex, setSelectedLines]);
-
-	const locateAction = useAtomValue(locateActionAtom);
 	useEffect(() => {
-		if (locateAction > 0) {
+		if (locateAction > 0 && locateAction !== lastHandledLocateRef.current) {
+			lastHandledLocateRef.current = locateAction;
 			handleLocate();
 		}
 	}, [locateAction, handleLocate]);
 
-	const jumpAction = useAtomValue(outlineJumpActionAtom);
 	useEffect(() => {
-		if (!jumpAction) return;
-		const targetIndex = lyricLines.findIndex((l) => l.id === jumpAction.id);
+		if (!jumpAction || jumpAction.ts === lastHandledJumpRef.current) return;
+		lastHandledJumpRef.current = jumpAction.ts;
+		const targetIndex = lyricLinesRef.current.findIndex(
+			(l) => l.id === jumpAction.id,
+		);
 		if (targetIndex !== -1) {
 			scrollToLineIndex(targetIndex);
 		}
-	}, [jumpAction, lyricLines, scrollToLineIndex]);
+	}, [jumpAction, scrollToLineIndex]);
 
 	const { onPointerDown } = useLyricListDrag({
 		containerRef: viewElRef,

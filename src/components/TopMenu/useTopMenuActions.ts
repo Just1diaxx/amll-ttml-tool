@@ -24,6 +24,7 @@ import {
 	metadataEditorDialogAtom,
 	settingsDialogAtom,
 	submitToAMLLDBDialogAtom,
+	syllableSmoothingDialogAtom,
 	timeShiftDialogAtom,
 } from "$/states/dialogs.ts";
 import {
@@ -70,6 +71,7 @@ export const useTopMenuActions = () => {
 		advancedSegmentationDialogAtom,
 	);
 	const setTimeShiftDialog = useSetAtom(timeShiftDialogAtom);
+	const setSyllableSmoothingDialog = useSetAtom(syllableSmoothingDialogAtom);
 	const { openFile } = useFileOpener();
 	const setProjectId = useSetAtom(projectIdAtom);
 	const { config: segmentationConfig } = useSegmentationConfig();
@@ -449,6 +451,10 @@ export const useTopMenuActions = () => {
 		setAdvancedSegmentationDialog(true);
 	}, [setAdvancedSegmentationDialog]);
 
+	const onOpenSyllableSmoothing = useCallback(() => {
+		setSyllableSmoothingDialog(true);
+	}, [setSyllableSmoothingDialog]);
+
 	return {
 		newFileKey,
 		openFileKey,
@@ -477,6 +483,7 @@ export const useTopMenuActions = () => {
 		onSelectWordsOfMatchedSelection,
 		onDeleteSelection,
 		onOpenTimeShift,
+		onOpenSyllableSmoothing,
 		onOpenMetadataEditor,
 		onOpenSettings,
 		onAutoSegment,

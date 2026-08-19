@@ -92,3 +92,6 @@ export const enableAutoRomanizationPredictionAtom = atomWithStorage(
 	"enableAutoRomanizationPrediction",
 	false,
 );
+
+export { stretchAlgorithmAtom } from "$/modules/audio/states";
+export type { StretchAlgorithm } from "$/modules/ffmpeg/types.ts";

@@ -163,7 +163,16 @@
 			"customBackgroundBrightness": "Brightness",
 			"customBackground": "Custom Background",
 			"customBackgroundEnabled": "Background set",
-			"customBackgroundManage": "Settings"
+			"customBackgroundManage": "Settings",
+			"stretchAlgorithm": "Audio Time-Stretching Algorithm",
+			"stretchAlgorithmDesc": {
+				"spectral": "Spectral (Phase Vocoder): Higher fidelity, but may slightly increase resource usage",
+				"wsola": "WSOLA (Waveform Similarity Overlap-Add): Legacy time-stretching algorithm. Lower audio quality, but lower resource usage"
+			},
+			"stretchAlgorithmOptions": {
+				"spectral": "Spectral",
+				"wsola": "WSOLA"
+			}
 		},
 		"about": {
 			"update": "Update",
@@ -263,7 +272,8 @@
 				"toYRC": "Export to YRC",
 				"toLrcfySylb": "Export to Lyricify Syllable",
 				"toASS": "Export to ASS subtitles"
-			}
+			},
+			"syllableSmoothing": "Smooth Timeline..."
 		}
 	},
 	"header": {
@@ -481,17 +491,7 @@
 		"amount": "Offset (ms)",
 		"direction": "Direction",
 		"advance": "Advance (-)",
-		"delay": "Delay (+)",
-		"scopeLabel": "Scope",
-		"scope": {
-			"all": "All lyric lines",
-			"selected": "Selected lyric lines",
-			"selectedFollowing": "Selected and followings",
-			"custom": "Custom Range"
-		},
-		"fromLine": "From line",
-		"toLine": "to line",
-		"line": ""
+		"delay": "Delay (+)"
 	},
 	"distributeRomanDialog": {
 		"title": "Distribute Line Romanization to Words",
@@ -716,5 +716,18 @@
 			"spectrogramCalibration": "Calibrate with Spectrogram",
 			"clickOnSpectrogramToCalibrate": "Click on spectrogram to calibrate"
 		}
+	},
+	"syllableSmoothingDialog": {
+		"title": "Smooth Timeline",
+		"thresholdWarning": "Setting a threshold that is too high may overstretch syllables and affect timestamp accuracy.",
+		"thresholdLabel": "Smoothing Threshold",
+		"thresholdLow": "Low (5%)",
+		"thresholdMedium": "Medium (15%)",
+		"thresholdHigh": "High (30%)",
+		"thresholdCustom": "Custom",
+		"customThresholdInput": "Threshold",
+		"mergeSyllables": "Merge Syllables",
+		"mergeSyllablesHint": "Produces Apple Music-like lyrics where CJK characters are merged together, but not suitable for regular use.",
+		"description": "Smooth the timeline for CJK syllables.\nDoes not smooth syllables from other languages."
 	}
 }
